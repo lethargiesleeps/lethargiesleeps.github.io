@@ -1,0 +1,14 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+#canvases {
+    z-index: -1;
+    position: absolute;
+}
+
+.main-nav {
+    background-color: black;
+}
