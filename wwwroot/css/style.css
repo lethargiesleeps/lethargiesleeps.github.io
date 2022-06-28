@@ -1,0 +1,92 @@
+/*GLOBAL*/
+
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@100&display=swap');
+
+@media screen and (min-width: 800px){
+
+    body {
+        margin: 0;
+        padding: 0;
+        overflow-x:hidden;
+        display: block;
+    }
+    
+    :root {
+        --header-footer: #282b30;
+        --background: 	#424549;
+        --text: #f0f7da;
+        --font-fam: 'Prompt', sans-serif;
+        --accent: #7289da;
+    }
+    
+    .clean {
+        margin: 0;
+        padding: 0;
+    }
+    
+    .coming-soon {
+        position: absolute;
+        top: 50%;
+        left: 38%;
+        text-align: center;
+    }
+    
+    .icons {
+        transition: color 5s;
+        color: white;
+        
+    }
+    
+    .icons :hover {
+        transition: color 250ms;
+        color: var(--accent);
+        
+    }
+    
+    h1 {
+        transition: color 2s;
+        color: var(--text);
+        font-family: var(--font-fam);
+        font-weight: 200;
+        font-size: 3em;
+        text-shadow: 4px 2px 5px var(--header-footer);
+        
+    
+    }
+    
+    h1:hover {
+        transition: color 2s;
+        color: var(--accent);
+    }
+    
+    #particles-js {
+        background: var(--background);
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        overflow-y: hidden;
+        z-index: -1;
+        
+    }
+    /* NAVIGATION */
+    
+    .top-menu {
+        display: flex;
+        flex-direction: row;
+        background-color: var(--header-footer);
+        justify-content: flex-start;
+        align-items: center;
+        padding: 1.2em 1em;
+        color: var(--text);
+        font-size: 1.1em;
+        box-shadow: 0em 0.2em rgba(0, 0, 0, 0.704);
+    }
+    
+    .top-menu a {
+        text-decoration: none;
+        color: white;
+        margin-right: 1em;
+        margin: 0em 0.5em;
+        
+    }
+}
