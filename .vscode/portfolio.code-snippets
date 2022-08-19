@@ -1,0 +1,87 @@
+{
+	// Place your lethargiesleeps.github.io workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+
+	"Boilerplate":{
+		"scope": "html",
+		"prefix": "letsgo",
+		"body": [
+			"<!DOCTYPE html>",
+			"<html lang=\"en\">",
+			"\t<head>",
+			"\t\t<meta charset=\"UTF-8\">",
+			"\t\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">",
+			"\t\t<meta name=\"author\" content=\"Michael Boisvenu-Landry\">",
+			"\t\t<meta name=\"email\" content=\"michaellandry@protonmail.com\">",
+			"\t\t<link rel=\"stylesheet\" href=\"./wwwroot/css/style.css\">",
+			"\t\t<script src=\"https://kit.fontawesome.com/f3d3c936ab.js\" crossorigin=\"anonymous\"></script>",
+			"\t\t<title>Michael Landry - </title>",
+			"\t</head>",
+			"\t<body>",
+			"\t\t<div id=\"particles-js\"></div>",
+			"\t\t<!-- Top Nav -->",
+			"\t\t<!-- End of Top Nav -->",
+			"\t\t<script src=\"./particles.js\"></script>",
+			"\t\t<script src=\"./app.js\"></script>",
+			"\t\t<script src=\"./wwwroot/js/site.js\" defer></script>",
+			"\t</body>",
+			"</html>"
+		]
+	},
+
+	"Main Menu":{
+		"scope": "html",
+		"prefix": "menu",
+		"body": [
+			"<header>",
+			"\t<nav>",
+			"\t\t<div class=\"nav-menu\">",
+			"\t\t\t<span class=\"menu-anchors\">",
+			"\t\t\t\t<span class=\"nav-link\"><a href=\"./index.html\"><i class=\"fa fa-1x fa-home\"></i></a></span>",
+			"\t\t\t\t<span class=\"nav-link\"><a href=\"./about.html\">About</a></span>",
+			"\t\t\t\t<span class=\"nav-link\"><a href=\"./blog.html\">Blog</a></span>",
+			"\t\t\t\t<div class=\"drop-down\">",
+			"\t\t\t\t\t<span class=\"nav-link\" onclick=\"openSub()\">Projects</span>",
+			"\t\t\t\t\t<div class=\"drop-down-content\" id=\"subMenu\">",
+			"\t\t\t\t\t\t<a href=\"./web-projects.html\">Web</a>",
+			"\t\t\t\t\t\t<a href=\"./desktop-projects.html\">Desktop</a>",
+			"\t\t\t\t\t\t<a href=\"./mobile-projects.html\">Mobile</a>",
+			"\t\t\t\t\t\t<a href=\"./other-projects.html\">Other</a>",
+			"\t\t\t\t\t</div>",
+			"\t\t\t\t</div>",
+			"\t\t\t</span>",
+			"\t\t\t<div class=\"icons-container\">",
+			"\t\t\t\t<span class=\"icons\"><a href=\"https://github.com/lethargiesleeps\" target=\"_blank\"><i class=\"fa fa-1x fa-github\"></i></a></span>",
+			"\t\t\t\t<span class=\"icons\"><a href=\"https://github.com/lethargiesleeps\" target=\"_blank\"><i class=\"fa fa-1x fa-linkedin\"></i></a></span>",
+			"\t\t\t\t<span class=\"icons\"><a href=\"https://github.com/lethargiesleeps\" target=\"_blank\"><i class=\"fa fa-1x fa-twitter\"></i></a></span>",
+			"\t\t\t</div>",
+			"\t\t</div>",
+			"\t</nav>",
+			"</header>"
+		]
+	},
+
+	"Coming Soon":{
+		"scope": "html",
+		"prefix": "comingsoon",
+		"body": [
+			"<div class=\"coming-soon\">",
+			"\t<h1>Coming Soon!</h1>",
+			"</div>"
+		]
+	}
+}
