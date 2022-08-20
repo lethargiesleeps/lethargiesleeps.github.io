@@ -7,7 +7,7 @@
         <meta name="email" content="michaellandry@protonmail.com">
         <link rel="stylesheet" href="./wwwroot/css/style.css">
         <script src="https://kit.fontawesome.com/f3d3c936ab.js" crossorigin="anonymous"></script>
-        <title>Michael Landry - Web Projects</title>
+        <title>Michael Landry - </title>
     </head>
     <body>
         <div id="particles-js"></div>
@@ -19,6 +19,7 @@
                         <span class="nav-link"><a href="./index.html"><i class="fa fa-1x fa-home"></i></a></span>
                         <span class="nav-link"><a href="./about.html">About</a></span>
                         <span class="nav-link"><a href="./blog.html">Blog</a></span>
+                        <span class="mobile-link" onclick="openSubMobile()">Projects</span>
                         <div class="drop-down">
                             <span class="nav-link" onclick="openSub()">Projects</span>
                             <div class="drop-down-content" id="subMenu">
@@ -35,37 +36,21 @@
                         <span class="icons"><a href="https://github.com/lethargiesleeps" target="_blank"><i class="fa fa-1x fa-twitter"></i></a></span>
                     </div>
                 </div>
+                <div class="nav-menu mobile-nav" id="subMenuMobile">
+                    <span class="menu-anchors">
+                        <span class="nav-link"><a href="./web-projects.html">Web</a></span>
+                        <span class="nav-link"><a href="./desktop-projects.html">Desktop</a></span>
+                        <span class="nav-link"><a href="./mobile-projects.html">Mobile</a></span>
+                        <span class="nav-link"><a href="./other-projects.html">Other</a></span>
+                    </span>
+                </div>
             </nav>
         </header>
+
+        <div class="coming-soon">
+            <h1>Coming Soon!</h1>
+        </div>
         <!-- End of Top Nav -->
-        <div class="page-header">
-            <h1>Web Projects</h1>
-        </div>
-        <div class="content-container">
-            <div class="projects">
-                <div class="project">
-                    <h3>myreportcard.io <span class="in-production">(In Production)</span></h3>
-                    <h6>Current stable release: Not released</h6>
-                    
-                    <p>A simple tool built in ASP.NET that calculates grades and grade-point average for students. Includes authentication.</p>
-                    <a class="button" href="">Coming Soon!</a>
-                </div>
-                <div class="project">
-                    <h3>Pokémon Crystal Password Cracker</h3>
-                    <h6>Current stable release: v1.0.1</h6>
-                    <img src="./wwwroot/images/crystalpasswordcracker.png" alt="An screenshot of the Crystal Password Cracker">
-                    <p>A small javascript-based tool that calculates the password needed to change the day and time in the 2nd generation Pokémon games.</p>
-                    <a class="button" href="https://lethargiesleeps.github.io/CrystalPasswordCracker">View Project</a>
-                </div>
-                <div class="project">
-                    <h3>lethargiesleeps.github.io</h3>
-                    <h6>Current stable release: v1.0.0</h6>
-                    <img src="./wwwroot/images/website.png" alt="A screenshot of this website">
-                    <p>This is the website you're currently on! Created using HTML5, CSS3, JavaScript, and particles.js</p>
-                    <a class="button" href="https://github.com/lethargiesleeps/lethargiesleeps.github.io">View Repository</a>
-                </div>
-            </div>
-        </div>
         <script src="./particles.js"></script>
         <script src="./app.js"></script>
         <script src="./wwwroot/js/site.js" defer></script>

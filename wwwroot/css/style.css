@@ -2,7 +2,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@100&display=swap');
 
-@media screen and (min-width: 400px){
+@media screen and (min-width: 200px){
 
     body {
         margin: 0;
@@ -79,6 +79,13 @@
     }
 
     /* NAVIGATION */
+    .mobile-link {
+        visibility: hidden;
+    }
+
+    .mobile-nav {
+        visibility: hidden;
+    }
     .nav-menu {
         background-color: var(--header-footer);
         padding: 1em;
@@ -152,7 +159,7 @@
         padding: 1em;
         
     }
-    .latest-news {
+    .page-header {
         display: flex;
         flex-direction: column;
         padding-top: 18em;
@@ -161,7 +168,7 @@
         
     }
 
-    .latest-news h1 {
+    .page-header h1 {
         border-bottom: 1px solid white;
         
     }
@@ -177,6 +184,69 @@
         
     }
 
+    .projects {
+        position: relative;
+        
+        padding: 3em 1em 3em 3em;
+        border-radius: 0.5em;
+        background-color: var(--header-footer);
+        color: white;
+        box-shadow: 0.1em 0.5em 0.25em #282b3036 ;
+        overflow-x: hidden;
+    }
+
+    .project {
+    
+        padding-right: 40em;
+        padding-bottom: 5em;
+        margin-bottom: 5em;
+        border-bottom: 1px solid white;
+    }
+
+    .project h3 {
+        font-size: 2em;
+        font-family: var(--font-fam);
+        font-weight: lighter;
+        margin: 0;
+    }
+
+    .project img {
+        height: 10em;
+        width: 18em;
+        border-radius: 0.5em;
+        border: 0.1em solid white;
+    }
+
+    .project p {
+        font-family: var(--font-fam);
+        margin-bottom: 2.5em;
+    }
+
+    .project h6 {
+        font-family: var(--font-fam);
+        font-size: 1em;
+        
+    }
+
+    .project .button {
+        transition: background-color 300ms, box-shadow 300ms, color 300ms;
+        
+        font-family: var(--font-fam);
+        color: white;
+        background-color: var(--accent);
+        padding: 1em;
+        text-decoration: none;
+        margin-top: 2em;
+        border-radius: 1em;
+        box-shadow: none;
+    }
+
+    .project .button:hover{
+        transition: background-color 300ms, box-shadow 300ms, color 300ms;
+        color:var(--accent);
+        background-color: var(--background);
+        box-shadow: inset 0.3em 0.1em #282b3036;
+    }
     .latest-content * {
         font-family: var(--font-fam);
         font-weight: lighter;
@@ -186,6 +256,12 @@
         border-bottom: 1px solid white;
     }
 
+    .in-production {
+        font-style: italic;
+        color: var(--accent);
+    }
+
 
     
 }
+
