@@ -16,6 +16,18 @@
 	// 	"description": "Log output to console"
 	// }
 
+	"Post": {
+		"scope": "html",
+		"prefix": "newpost",
+		"body": [
+			"<div class=\"post\">",
+			"\t<h3></h3>",
+			"\t<h4>Posted on: <em></em></h4>",
+			"\t<p></p>",
+			"\t<p></p>",
+			"</div>"
+		]
+	},
 	"Boilerplate":{
 		"scope": "html",
 		"prefix": "letsgo",
