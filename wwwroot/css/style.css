@@ -305,7 +305,7 @@
     
 }
 
-@media screen and (min-width: 100px) {
+@media screen and (max-width: 599px) {
     body {
         margin: 0;
         padding: 0;
