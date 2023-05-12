@@ -1,17 +1,17 @@
 {
   "particles": {
     "number": {
-      "value": 255,
+      "value": 400,
       "density": {
-        "enable": true,
+        "enable": false,
         "value_area": 800
       }
     },
     "color": {
-      "value": "#7289da"
+      "value": "#A6979C"
     },
     "shape": {
-      "type": "circle",
+      "type": ["circle"],
       "stroke": {
         "width": 0,
         "color": "#000000"
@@ -30,16 +30,16 @@
       "random": true,
       "anim": {
         "enable": true,
-        "speed": 1,
-        "opacity_min": 0.1,
+        "speed": 10,
+        "opacity_min": 0.5,
         "sync": false
       }
     },
     "size": {
-      "value": 7,
+      "value": 5,
       "random": true,
       "anim": {
-        "enable": true,
+        "enable": false,
         "speed": 40,
         "size_min": 0.1,
         "sync": false
@@ -48,14 +48,14 @@
     "line_linked": {
       "enable": true,
       "distance": 150,
-      "color": "#7289da",
+      "color": "#fbeaeb",
       "opacity": 0.4,
-      "width": 1
+      "width": 0.5
     },
     "move": {
       "enable": true,
       "speed": 1,
-      "direction": "none",
+      "direction": "top-right",
       "random": true,
       "straight": false,
       "out_mode": "out",
@@ -67,15 +67,15 @@
     }
   },
   "interactivity": {
-    "detect_on": "canvas",
+    "detect_on": "window",
     "events": {
       "onhover": {
-        "enable": false,
-        "mode": "bubble"
+        "enable": true,
+        "mode": "repulse"
       },
       "onclick": {
         "enable": false,
-        "mode": "pull"
+        "mode": "repulse"
       },
       "resize": true
     },
@@ -87,14 +87,15 @@
         }
       },
       "bubble": {
-        "distance": 400,
-        "size": 40,
+        "distance": 40,
+        "size": 15,
         "duration": 10,
         "opacity": 8,
         "speed": 3
       },
       "repulse": {
-        "distance": 200
+        "distance": 30,
+        "duration": 1.5
       },
       "push": {
         "particles_nb": 4
@@ -107,7 +108,7 @@
   "retina_detect": true,
   "config_demo": {
     "hide_card": false,
-    "background_color": "#7289da",
+    "background_color": "#2f3c7e",
     "background_image": "",
     "background_position": "50% 50%",
     "background_repeat": "no-repeat",
