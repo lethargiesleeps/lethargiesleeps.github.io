@@ -6,60 +6,39 @@
         <meta name="author" content="Michael Boisvenu-Landry">
         <meta name="email" content="michaellandry@protonmail.com">
         <script src="https://kit.fontawesome.com/f3d3c936ab.js" crossorigin="anonymous"></script>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
         <link rel="stylesheet" href="./wwwroot/css/style.css">
-        <link rel="stylesheet" href="./wwwroot/css/mainContainer.css">
-        <title>Michael Landry - Home</title>
+        <title>Michaël Landry - Portfolio</title>
     </head>
     <body>
-        <!-- START OF PARTICLES AND NAV -->
-        <div id="particles-js"></div>
-        <nav class="navbar navbar-expand-xl navbar-custom">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="/index.html">Michael_Landry</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarWithDropdown" aria-controls="navbarWithDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarWithDropdown">
-                <ul class="navbar-nav">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="https://lethargiesleeps.hashnode.dev/">Blog</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="https://lethargiesleeps.hashnode.dev/">Connect</a>
-                  </li>
-                  
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Projects
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                      <li><a class="dropdown-item" href="./web-projects.html">Web</a></li>
-                      <li><a class="dropdown-item" href="./desktop-projects.html">Desktop</a></li>
-                      <li><a class="dropdown-item" href="./mobile-projects.html">Mobile</a></li>
-                      <li><a class="dropdown-item" href="./other-projects.html" >Other</a></li>
-                    </ul>
-                  </li>
-                  <div class="social-container">
-                    <i class="fa fa-github"></i>
-                  </div>
+        <div class="nav-container" id="nav-container">
+            <nav class="nav">
+                <ul class="nav-menu" id="nav-menu">
+                    <li class="nav-link" id="homeLink">Home</li>
+                    <li class="nav-link" id="projectLink">Projects</li>
+                    <li class="nav-link" id="infoLink">About</li>
+                    <li class="nav-link" id="connectLink">Connect</li>
                 </ul>
-              </div>
-            </div>
-          </nav>
-        <!-- END OF PARTICLES AND NAV -->
-        <!-- CONTAINER START -->
-        <div class="container-fluid px-xxl-4 px-xl-4 px-lg-4 px-md-3 px-sm-2">
-            <div class="border-container">
-              <div>
-                <h1>Welcome</h1>
-                <p>About me</p>
-              </div>
+            </nav>
+        </div>
 
+        <div class="container" id="container">
+            <div id="particles-js"></div>
+            <div class="name-title" id="title">
+                <div class="name prevent-select" id="name">
+                    <h1>Michael</h1>
+                </div>
+                <div class="title prevent-select" id="title">
+                    <h3>Developer & Programmer</h3>
+                </div>
+            </div>
+
+            <div class="blurb-container prevent-select" id="homeBlurb">
+                <p class="blurb-text">Hello world</p>
             </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-        <script src="./particles.js"></script>
-        <script src="./app.js"></script>
+        <script src="
+https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js
+"></script>
+        
     </body>
 </html>
