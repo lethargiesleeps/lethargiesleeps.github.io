@@ -7,38 +7,87 @@
         <meta name="email" content="michaellandry@protonmail.com">
         <script src="https://kit.fontawesome.com/f3d3c936ab.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="./wwwroot/css/style.css">
-        <title>Michaël Landry - Portfolio</title>
+        <title id="pageTitle">Michaël Landry - Portfolio</title>
     </head>
     <body>
+        
         <div class="nav-container" id="nav-container">
             <nav class="nav">
                 <ul class="nav-menu" id="nav-menu">
                     <li class="nav-link" id="homeLink">Home</li>
                     <li class="nav-link" id="projectLink">Projects</li>
-                    <li class="nav-link" id="infoLink">About</li>
+                    <li class="nav-link" id="infoLink">Resume</li>
                     <li class="nav-link" id="connectLink">Connect</li>
                 </ul>
             </nav>
         </div>
-
+            
         <div class="container" id="container">
-            <div id="particles-js"></div>
-            <div class="name-title" id="title">
-                <div class="name prevent-select" id="name">
-                    <h1>Michael</h1>
+            <div class="canvas" id="particles-js"></div>
+            <div class="bg-image"></div>
+
+            <!-- START HOME -->
+            <div class="home-body" id="homeBody">
+                <div class="credentials-container" id="credentialsContainer">
+                    <div class="name prevent-select">
+                        <h1 id="name">Michaël Landry</h1>
+                    </div>
+
+                    <div class="title prevent-select">
+                        <h3 id="title">Developer & Programmer</h3>
+                    </div>
                 </div>
-                <div class="title prevent-select" id="title">
-                    <h3>Developer & Programmer</h3>
+    
+                <div class="blurb-container prevent-select" id="homeBlurb">
+                    <p class="blurb-text">Developer from Ottawa, Canada. My goal is to produce software that serves a concise purpose, and can be used by users to acheive one specific goal at a time using modern design principles and architectures. On this site, you will find projects that adhere to this goal, as well as unrelated pet projects that aim to demonstrate my software development journey. </p>
+                </div> 
+            </div>
+            <!-- END HOME -->
+
+            <!-- START PROJECTS -->
+            <div class="panel-container" id="projectCatContainer">
+                <div class="panel prevent-select" style="background-image: url('./wwwroot/images/projects/web.jpg');">
+                    <h3>Web Projects</h3>
                 </div>
+                <div class="panel prevent-select" style="background-image: url('./wwwroot/images/projects/mobile.jpg');">
+                    <h3>Mobile Projects</h3>
+                </div>
+                <div class="panel prevent-select" style="background-image: url('./wwwroot/images/projects/desktop.jpg');">
+                    <h3>Desktop Projects</h3>
+                </div>
+                <!-- <div class="panel">
+                    <h3>Other Projects</h3>
+                </div> -->
             </div>
 
-            <div class="blurb-container prevent-select" id="homeBlurb">
-                <p class="blurb-text">Hello world</p>
+            <div class="panel-container" id="webProjectsContainer">
+                <div class="panel-nav" id="webProjectsToProjects">
+                    <span class="fa fa-solid fa-chevron-left fa-2x icon"></span>
+                </div>
+                <div class="panel prevent-select" id="gradeGenius" style="background-image: url('./wwwroot/images/projectcovers/myreportcard.png');">
+                    <h3>Grade Genius</h3>
+                </div>
+                <div class="panel prevent-select" id="frontEndProjects" style="background-image: url('./wwwroot/images/projectcovers/frontEndProjects.jpg');">
+                    <h3>Front End Expirements</h3>
+                </div>
+                <div class="panel panel-select" id="passwordCracker" style="background-image: url(./wwwroot/images/projectcovers/crystalpasswordcracker.png);">
+                    <h3>Pokemon Crystal Password Cracker</h3>
+                </div>
+
             </div>
+            <!-- END PROJECTS -->
+
+            <!-- START RESUME -->
+            <!-- END RESUME -->
+
+            <!-- START CONNECT -->
+            <!-- END CONNECT -->
+
+            
         </div>
-        <script src="
-https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js
-"></script>
         
+        <script src="./wwwroot/js/site.js"></script>
+        <script src="./particles.js-master/particles.js-master/particles.min.js"></script>
+        <script src="./particles.js-master/demo/js/app.js"></script>
     </body>
 </html>

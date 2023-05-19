@@ -1,28 +1,37 @@
 /* GLOBAL*/
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap');
+:root {
+    --fontFamily: 'Quicksand', sans-serif;
+    --primary: #1D201D;
+    --accent: #e7e8e3;
+    --hover: #aeb1a0;
+    --color-trans: color 0.4s ease-in;
+}
+
+
+
 * {
     box-sizing: border-box;
 }
 
 html, body {
-    background-color: black;
+    background-color: var(--primary);
     margin: 0;
-    overflow-y: hidden;
-    color: white;
-    padding: 1vh 1vw;
-    
+    overflow: hidden;
+    padding: 0 1vw;
 }
 
 .prevent-select {
     -webkit-user-select: none; /* Safari */
     -ms-user-select: none; /* IE 10 and IE 11 */
     user-select: none; /* Standard syntax */
-  }
-
+}
 
 /* NAV */
 .nav-container {
     
     margin-bottom: 2vh;
+    
 }
 
 .nav-menu {
@@ -35,23 +44,185 @@ html, body {
 
 .nav-link {
     margin: 0 2vw;
+    font-family: var(--fontFamily);
+    color: var(--accent);
+    font-weight: 300;
+    transition: var(--color-trans);
+    cursor: pointer;
 }
+
+.on-hover-nav {
+    color: var(--hover);
+}
+
+.panel-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--accent);
+    padding-top: 2vh;
+    padding-right: 2vw;
+}
+
+.icon {
+    color: var(--accent);
+    cursor: pointer;
+    transition: color 0.5s ease-in;
+}
+.icon:hover {
+    color: var(--hover)
+}
+
+
+
 
 /* CONTAINERS */
 .container {
-    display: flex;
-    align-items: start;
-    justify-content: space-between;
-    border: 2px solid whitesmoke;
+    position: relative;
+    border: 2px solid var(--accent);
     height: 85vh;
     margin: 0;
     box-sizing: border-box;
-    padding: 1vh 1.5vw;
+    padding: 1vh 1.5vw 1vh 1.5vw;
+    z-index: 1;
+    
+    
 }
 
-/* TEXT */
+.bg-image {
+    background-image: url('../images/grain.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat-y;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.1;
+    
+}
+.home-body {
+    position:inherit;
+    top: 20vh;
+    
+    align-items: start;
+    flex-direction: column;
+    justify-content: center;
+}
+.canvas {
+    
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background-color: var(--primary);
+}
+
+.container-hover {
+    border-color: var(--primary);
+    flex-direction: column;
+}
+
+.credentials-container {
+    color: var(--accent);
+}
+
+
 .blurb-container {
-    position: relative;
-    top: 40vh;
+    color: var(--accent);
+    text-align: left;
+    padding-right: 65vw;
+    
 }
 
+.panel-container {
+    display: flex;
+    flex-wrap: nowrap;
+    
+}
+
+.panel {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 80vh;
+    border-radius: 50px;
+    color: var(--accent);
+    cursor: pointer;
+    flex: 1;
+    margin: 10px;
+    transition-property: flex, border-radius;
+    transition-duration: .7s;
+    transition-timing-function: ease-in;
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.25);
+    font-family: var(--fontFamily);
+    
+}
+
+.panel.active {
+    flex: 5;
+    border-radius: 25px;
+    
+}
+
+.panel.active h3 {
+    opacity: 1;
+    transition: opacity 0.4s ease-in 0.3s;
+}
+
+.panel h3 {
+    position: absolute;
+    font-size: 24px;
+    bottom: 30px;
+    left: 30px;
+    margin: 0;
+    opacity: 0;
+    text-shadow: 4px 4px 12px var(--primary);
+}
+
+
+.title {
+   position: relative;
+   top: -2vh; 
+}
+.name h1 {
+    font-family: var(--fontFamily);
+    font-weight: 400; 
+}
+
+.title h3 {
+    font-family: var(--fontFamily);
+    font-weight: 300;
+}
+
+.blurb-text {
+    font-family: var(--fontFamily);
+    font-weight: 300;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+    .container {
+        padding: 0 2vw;
+    }
+
+    .blurb-text {
+        font-size: 10px;
+    }
+
+    .blurb-container {
+        padding-right: 5vw;
+    }
+
+    .credentials-container {
+        padding-top: 10vh;
+    }
+
+    
+  }
