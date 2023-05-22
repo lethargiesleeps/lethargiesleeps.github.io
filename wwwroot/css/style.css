@@ -355,6 +355,9 @@ html, body {
 /*-------------MEDIA---------------*/
 @media only screen and (max-width: 600px) {
 
+    html, body {
+        overflow-y: visible;
+    }
     .container {
         padding: 0 2vw;
     }
