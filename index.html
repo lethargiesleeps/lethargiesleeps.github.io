@@ -27,32 +27,32 @@
             <div class="bg-image"></div>
 
             <!-- START HOME -->
-            <div class="home-body" id="homeBody">
+            <div class="home-body prevent-select" id="homeBody">
                 <div class="credentials-container" id="credentialsContainer">
-                    <div class="name prevent-select">
+                    <div class="name">
                         <h1 id="name">Michaël Landry</h1>
                     </div>
 
-                    <div class="title prevent-select">
+                    <div class="title">
                         <h3 id="title">Developer & Programmer</h3>
                     </div>
                 </div>
     
-                <div class="blurb-container prevent-select" id="homeBlurb">
+                <div class="blurb-container" id="homeBlurb">
                     <p class="blurb-text">Developer from Ottawa, Canada. My goal is to produce software that serves a concise purpose, and can be used by users to acheive one specific goal at a time using modern design principles and architectures. On this site, you will find projects that adhere to this goal, as well as unrelated pet projects that aim to demonstrate my software development journey. </p>
                 </div> 
             </div>
             <!-- END HOME -->
 
             <!-- START PROJECTS -->
-            <div class="panel-container" id="projectCatContainer">
-                <div class="panel prevent-select" style="background-image: url('./wwwroot/images/projects/web.jpg');">
+            <div class="panel-container prevent-select" id="projectCatContainer">
+                <div class="panel" style="background-image: url('./wwwroot/images/projects/web.jpg');">
                     <h3>Web Projects</h3>
                 </div>
-                <div class="panel prevent-select" style="background-image: url('./wwwroot/images/projects/mobile.jpg');">
+                <div class="panel" style="background-image: url('./wwwroot/images/projects/mobile.jpg');">
                     <h3>Mobile Projects</h3>
                 </div>
-                <div class="panel prevent-select" style="background-image: url('./wwwroot/images/projects/desktop.jpg');">
+                <div class="panel" style="background-image: url('./wwwroot/images/projects/desktop.jpg');">
                     <h3>Desktop Projects</h3>
                 </div>
                 <!-- <div class="panel">
@@ -60,17 +60,17 @@
                 </div> -->
             </div>
 
-            <div class="panel-container" id="webProjectsContainer">
+            <div class="panel-container prevent-select" id="webProjectsContainer">
                 <div class="panel-nav" id="webProjectsToProjects">
                     <span class="fa fa-solid fa-chevron-left fa-2x icon"></span>
                 </div>
-                <div class="panel prevent-select" id="gradeGenius" style="background-image: url('./wwwroot/images/projectcovers/myreportcard.png');">
+                <div class="panel" id="gradeGenius" style="background-image: url('./wwwroot/images/projectcovers/myreportcard.png');">
                     <h3>Grade Genius</h3>
                 </div>
-                <div class="panel prevent-select" id="frontEndProjects" style="background-image: url('./wwwroot/images/projectcovers/frontEndProjects.jpg');">
+                <div class="panel" id="frontEndProjects" style="background-image: url('./wwwroot/images/projectcovers/frontEndProjects.jpg');">
                     <h3>Front End Expirements</h3>
                 </div>
-                <div class="panel panel-select" id="passwordCracker" style="background-image: url(./wwwroot/images/projectcovers/crystalpasswordcracker.png);">
+                <div class="panel" id="passwordCracker" style="background-image: url(./wwwroot/images/projectcovers/crystalpasswordcracker.png);">
                     <h3>Pokemon Crystal Password Cracker</h3>
                 </div>
 
@@ -78,6 +78,134 @@
             <!-- END PROJECTS -->
 
             <!-- START RESUME -->
+            <div class="resume-container prevent-select" id="resumeContainer">
+                <div class="resume-top">
+                    <div class="name">
+                        <h1>Michaël Landry</h1>
+                    </div>
+                    <div class="location">
+                        <h3>Ottawa, ON</h3>
+                    </div>
+                </div>
+
+                <div class="resume-bottom">
+                    <div class="resume-left">
+                        <div class="experience">
+                            <h2>Experience:</h2>
+                            <ul>
+                                <li>
+                                    <h3>Program Assistant | Immigration Refugrees and Citizenship Canada</h3>
+                                    <h4>January 2019 - Present</h4>
+                                    <ul>
+                                        <li>Helmed a project for refactoring the UI/UX for data dashboards using HTML/CSS/JS and Oracle BI EE.</li>
+                                        <li>Worked to help improve performance of a web-based data vizualisation portal.</li>
+                                        <li>Developed extensions for Excel based on client-needs using VBA.</li>
+                                    </ul>
+                                </li>
+    
+                                <li>
+                                    <h3>Student Data Analyst | Indigenous Services Canada</h3>
+                                    <h4>May 2022 - September 2022</h4>
+                                    <ul>
+                                        <li>Prepared data visualizations using Microsoft Power BI suite and Cognos BI.</li>
+                                        <li>Cleaned and prepared raw data sets using SQL, Excel, and Power BI’s Query Editor.</li>
+                                        <li>Used DAX measures and functions to extract data from various sources.</li>
+                                        <li>Presented analytics and data visualizations to a variety of clients.</li>
+                                    </ul>
+                                </li>
+    
+                                <li>
+                                    <h3>Junior Developer | Green Roast Brew</h3>
+                                    <h4>September 2021 -  March 2022</h4>
+                                    <ul>
+                                        <li>Created modules for a web-based administration application using C# and ASP.NET Core MVC5.</li>
+                                        <li>Installed and deployed local servers in various locations to serve a browser-based Point of Sale application to clients.</li>
+                                        <li>Worked closely with a senior lead to help facilitate the deployment of production-ready software.</li>
+                                        <li>Connected production-ready software to local SQL servers.</li>
+                                        <li>Configured Adyen payment terminals to accept and process payments and returns.</li>
+                                        <li>Troubleshooted remote servers using TeamViewer.</li>
+                                        <li>Configured custom DNS settings on proprietary routers.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="resume-right">
+                        <div class="skills">
+                            <h2>Skills:</h2>
+                            <div class="skills-sub">
+                                <div>
+                                    <h3>Programming and Markup Languages</h3>
+                                    <ul>
+                                        <li>C# <span>(3 years)</span></li>
+                                        <li>HTML5, CSS3, JavaScript <span>(3 years)</span></li>
+                                        <li>XAML <span>(3 years)</span></li>
+                                        <li>SQL <span>(3 years)</span></li>
+                                        <li>Java <span>(2 years)</span></li>
+                                        <li>Kotlin <span>(1 year)</span></li>
+                                        <li>PHP <span>(1 year)</span></li>
+                                        <li>JSX <span>(1 year)</span></li>
+                                    </ul>
+
+                                    <h3>DBMSs</h3>
+                                    <ul>
+                                        <li>MSSQL <span>(3 years)</span></li>
+                                        <li>MySQL <span>(2 years)</span></li>
+                                        <li>Postgres <span>(1 year)</span></li>
+                                    </ul>
+                                </div>
+
+                                <div>
+                                    <h3>Tools, Libraries & Frameworks</h3>
+                                    <ul>
+                                        <li>.NET <span>(3 years)</span></li>
+                                        <li>Bootstrap <span>(3 years)</span></li>
+                                        <li>WinForms <span>(3 years)</span></li>
+                                        <li>WPF <span>(3 years)</span></li>
+                                        <li>Xamarin.Forms <span>(2 years)</span></li>
+                                        <li>EF Core <span>(2 years)</span></li>
+                                        <li>ASP.NET MVC <span>(2 years)</span></li>
+                                        <li>Unity <span>(2 years)</span></li>
+                                        <li>Blazor/Razor <span>(2 years)</span></li>
+                                        <li>jQuery <span>(1 year)</span></li>
+                                        <li>three.js <span>(1year)</span></li>
+                                        <li>Laravel <span>(1 year)</span></li>
+                                        <li>React <span>(1 year)</span></li>
+                                        <li>React Native & Expo <span>(1 year)</span></li>
+                                    </ul>
+                                </div>  
+                                
+                                <div>
+                                    <h3>Other</h3>
+                                    <ul>
+                                        <li>MS Office <span>(+5 years)</span></li>
+                                        <li>Microsoft Power BI <span>(1 year)</span></li>
+                                        <li>IBM Cognos <span>(1 year)</span></li>
+                                        <li>Oracle BI EE <span>(1 year)</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="education">
+                            <h2>Education:</h2>
+                            <ul>
+                                <li>
+                                    <h3>Diploma in Computer Programming | Algonquin College</h3>
+                                    <h4>January 2022 - January 2024</h4>
+                                </li>
+                                <li>
+                                    <h3>Advanced Diploma in Advertising and Marketing Communications | Algonquin College</h3>
+                                    <h4>September 2013 - April 2017</h4>
+                                </li>
+                                <li>
+                                    <h3>High School Diploma | Collège catholique Franco-Ouest</h3>
+                                    <h4>September 2007 - June 2012</h4>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- END RESUME -->
 
             <!-- START CONNECT -->

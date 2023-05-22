@@ -1,4 +1,4 @@
-/* GLOBAL*/
+/*-------------GLOBAL---------------*/
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap');
 :root {
     --fontFamily: 'Quicksand', sans-serif;
@@ -22,12 +22,14 @@ html, body {
 }
 
 .prevent-select {
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none; /* IE 10 and IE 11 */
-    user-select: none; /* Standard syntax */
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
-/* NAV */
+/*-------------END-GLOBAL---------------*/
+
+/*-------------NAV---------------*/
 .nav-container {
     
     margin-bottom: 2vh;
@@ -73,10 +75,11 @@ html, body {
     color: var(--hover)
 }
 
+/*-------------END-NAV---------------*/
 
 
 
-/* CONTAINERS */
+/*-------------CONTAINER---------------*/
 .container {
     position: relative;
     border: 2px solid var(--accent);
@@ -100,19 +103,19 @@ html, body {
     width: 100%;
     height: 100%;
     z-index: -1;
-    opacity: 0.1;
+    opacity: 0.15;
     
 }
+
 .home-body {
     position:inherit;
     top: 20vh;
-    
     align-items: start;
     flex-direction: column;
     justify-content: center;
 }
+
 .canvas {
-    
     position: absolute;
     top: 0;
     left: 0;
@@ -131,6 +134,65 @@ html, body {
     color: var(--accent);
 }
 
+.resume-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: var(--accent);
+    text-shadow: 4px 4px 8px var(--primary);
+}
+
+.resume-bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.resume-left {
+    display: flex;
+    flex-direction: row;
+    margin-right: 2vw;
+}
+
+.resume-top .name {
+    margin-bottom: -3vh;
+}
+
+.skills-sub {
+    display: flex;
+    flex-direction: row;
+}
+
+.skills-sub div {
+    margin-right: 0.75vw;
+    
+}
+
+.skills-sub div ul {
+    padding-left: 1vw;
+}
+
+.location {
+    margin-bottom: -2vh;
+    border-bottom: 2px solid var(--accent);
+    margin-right: 75%;
+}
+.experience ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.experience ul li ul {
+    list-style-type: circle;
+    padding-left: 2vw;
+    margin-top: -1vh;
+}
+
+
+.resume-right {
+    display: flex;
+    flex-direction: column;
+    padding-right: 0;
+}
 
 .blurb-container {
     color: var(--accent);
@@ -139,6 +201,11 @@ html, body {
     
 }
 
+.education ul {
+    list-style-type: none;
+    padding-left: 0;
+    
+}
 .panel-container {
     display: flex;
     flex-wrap: nowrap;
@@ -169,6 +236,9 @@ html, body {
     border-radius: 25px;
     
 }
+/*-------------END-CONTAINER---------------*/
+
+/*-------------TEXT---------------*/
 
 .panel.active h3 {
     opacity: 1;
@@ -182,7 +252,8 @@ html, body {
     left: 30px;
     margin: 0;
     opacity: 0;
-    text-shadow: 4px 4px 12px var(--primary);
+    text-shadow: 4px 4px 8px var(--primary);
+    transition: opacity 0.4s ease-in 0.3s;
 }
 
 
@@ -190,9 +261,84 @@ html, body {
    position: relative;
    top: -2vh; 
 }
+
+.education h2 {
+    font-family: var(--fontFamily);
+    font-weight: 400;
+    margin-bottom: -2vh;
+}
+
+.education ul li h3 {
+    font-family: var(--fontFamily);
+    font-weight: 300;
+    font-size: 16px;
+    margin-bottom: -2vh;
+}
+
+.education ul li h4 {
+    font-family: var(--fontFamily);
+    font-weight: 400;
+    font-style: italic;
+    font-size: 12px;
+    margin-bottom: -1.5vh;
+}
+.skills h2 {
+    font-family: var(--fontFamily);
+    font-weight: 400;
+    margin-bottom: -1vh;
+}
+
+.skills-sub div h3 {
+    font-family: var(--fontFamily);
+    font-weight: 400;
+    font-size: 16px;
+    margin-bottom: -1vh;
+}
+
+.skills-sub div ul li span {
+    font-weight: 400;
+    font-style: italic;
+}
+.skills-sub div ul {
+    font-family: var(--fontFamily);
+    list-style-type: circle;
+    font-size: 12px;
+}
+.experience ul li ul li {
+    font-family: var(--fontFamily);
+    font-weight: 300;
+    font-size: 12px;
+}
+.experience h2 {
+    font-family: var(--fontFamily);
+    font-weight: 400;
+    margin-bottom: -1vh;
+    
+}
+
+.experience ul li h3 {
+    font-family: var(--fontFamily);
+    font-weight: 400;
+    font-size: 16px;
+    margin-bottom: -2vh;
+}
+
+
+.experience ul li h4 {
+    font-family: var(--fontFamily);
+    font-weight: 300;
+    font-size: 12px;
+    font-style: italic;
+}
+
 .name h1 {
     font-family: var(--fontFamily);
     font-weight: 400; 
+}
+
+.location h3 {
+    font-family: var(--fontFamily);
+    font-weight: 300;
 }
 
 .title h3 {
@@ -205,24 +351,32 @@ html, body {
     font-weight: 300;
 }
 
-
-
+/*-------------END-TEXT---------------*/
+/*-------------MEDIA---------------*/
 @media only screen and (max-width: 600px) {
+
     .container {
         padding: 0 2vw;
     }
 
-    .blurb-text {
-        font-size: 10px;
-    }
-
-    .blurb-container {
-        padding-right: 5vw;
+    .home-body {
+        position:inherit;
+        top: 25vh;
+        align-items: start;
+        flex-direction: column;
+        justify-content: center;
     }
 
     .credentials-container {
-        padding-top: 10vh;
+        margin-bottom: -1vh;
     }
+    .blurb-container {
+        padding-right: 0;
+        font-size: 12px;
+    }
+
 
     
   }
+
+  /*-------------END-MEDIA---------------*/

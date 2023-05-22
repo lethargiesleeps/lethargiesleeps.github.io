@@ -1,14 +1,15 @@
-const links = document.querySelectorAll('li');
+const links = document.querySelectorAll('.nav-link');
 const borderContainer = document.getElementById('container');
 
 //PROJECTS ELEMENTS//
 const panels = document.querySelectorAll('.panel');
 
 const elements = [
-    {name: 'credentials', value: document.getElementById('credentialsContainer') },
-    {name: 'blurb', value: document.getElementById('homeBlurb') },
-    {name: 'projects', value: document.getElementById('projectCatContainer') },
-    {name: 'webProjects', value: document.getElementById('webProjectsContainer') }
+    {name: 'credentials', value: document.getElementById('credentialsContainer') }, //0
+    {name: 'blurb', value: document.getElementById('homeBlurb') },                  //1
+    {name: 'projects', value: document.getElementById('projectCatContainer') },     //2
+    {name: 'webProjects', value: document.getElementById('webProjectsContainer') },  //3
+    {name: 'resume', value: document.getElementById('resumeContainer') }             //4
 ];
 
 const navIcons = [
@@ -122,6 +123,7 @@ function goToResume() {
     resetNavTitles();
     links[2].innerText = '☺'
     clearContainer();
+    makeVisible(elements[4], 'flex');
 }
 
 function goToConnect() {
