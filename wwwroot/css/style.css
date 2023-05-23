@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap');
 :root {
     --fontFamily: 'Quicksand', sans-serif;
-    --primary: #1D201D;
+    --primary: #1d201d;
     --accent: #e7e8e3;
     --hover: #aeb1a0;
     --color-trans: color 0.4s ease-in;
@@ -95,7 +95,7 @@ html, body {
     box-sizing: border-box;
     padding: 1vh 1.5vw 1vh 1.5vw;
     z-index: 1;
-    
+    overflow: hidden;
     
 }
 
@@ -111,7 +111,7 @@ html, body {
     height: 100%;
     z-index: -1;
     opacity: 0.15;
-    
+    overflow: hidden;
 }
 
 .home-body {
@@ -130,6 +130,7 @@ html, body {
     height: 100%;
     z-index: -2;
     background-color: var(--primary);
+    overflow: hidden;
 }
 
 .container-hover {
@@ -368,12 +369,14 @@ html, body {
 @media only screen and (max-width: 600px) {
 
     .container {
-        padding: 0 2vw;
+        padding: 2vh 2vw;
         height: 80vh;
+        overflow-y: scroll;
     }
+    
 
     .nav-container {
-        padding-right: 6vw;
+        padding-right: 2vw;; 
     }
     .icon {
         display: none;
@@ -400,7 +403,7 @@ html, body {
     }
 
     .panel-container {
-        padding-top: 2vh;
+        padding-top: 1vh;
         flex-wrap: wrap;
         height: 80vh; /* Adjust the height as per your requirement */
         align-content: center; /* Align panels to the top */
@@ -437,6 +440,91 @@ html, body {
     .panel.active h3 {
         opacity: 1;
         
+    }
+
+    .resume-top .name {
+        font-size: 10px;
+        margin-bottom: -1vh;
+    }
+
+    .resume-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        color: var(--accent);
+        text-shadow: 4px 4px 8px var(--primary);
+        background-color: rgba(29, 32, 29, 0.75);
+        padding: 1vh 1vw;
+    }
+
+    .resume-bottom {
+        flex-direction: column;
+        overflow-y: auto;
+    }
+    .resume-top .location {
+        font-size: 10px;
+        margin-bottom: 1vh;
+        
+    }
+
+    .education h2 {
+        font-size: 16px;
+        margin-bottom: 1vh;
+    }
+
+    .education ul li h3 {
+        font-size: 12px;
+        margin-bottom: -12px;
+    }
+
+    .education ul li h4 {
+        font-size: 10px;
+    }
+
+    .education ul li {
+        margin-bottom: 3vh;
+    }
+    .experience h2 {
+        font-size: 16px;
+    }
+
+    .experience ul li h3 {
+        font-size: 14px;
+        
+    }
+
+    .experience ul li h4 {
+        font-size: 12px;
+        
+    }
+
+    .experience ul li ul  {
+        padding-left: 5vw;
+        padding-bottom: 1vh;
+        border-bottom: 2px solid var(--accent);
+    }
+    .experience ul li ul li {
+        margin-bottom: 1vh;
+    }
+
+    .skills h2 { 
+        font-size: 16px;
+    }
+
+    .skills-sub {
+        flex-direction: column;
+        border-bottom: 2px solid var(--accent);
+    }
+    .skills-sub div h3 {
+        font-size: 14px;
+    }
+
+    .skills-sub div ul {
+        padding-left: 5vw;;
+    }
+
+    .skills-sub div ul li {
+        padding-bottom: 1vh;
     }
     
   }

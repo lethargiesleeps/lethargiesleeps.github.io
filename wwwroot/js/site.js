@@ -1,8 +1,11 @@
-const links = document.querySelectorAll('.nav-link');
-const borderContainer = document.getElementById('container');
+//GLOBAL VARIABLES//
+let currentPage = 0;
+const container = document.querySelector('.container');
 
 //PROJECTS ELEMENTS//
 const panels = document.querySelectorAll('.panel');
+const links = document.querySelectorAll('.nav-link');
+const borderContainer = document.getElementById('container');
 
 const elements = [
     {name: 'credentials', value: document.getElementById('credentialsContainer') }, //0
@@ -16,6 +19,8 @@ const navIcons = [
     {name: 'webProjectsToProjects', value: document.getElementById('webProjectsToProjects')}
 ];
 
+
+
 //PANEL NAV
 navIcons.forEach(n => {
     n.value.addEventListener('click', () => {
@@ -25,12 +30,14 @@ navIcons.forEach(n => {
                 break;
         }
     });
-})
+});
+
 //INIT
 links[0].innerText = '☺';
 clearContainer();
 makeVisible(elements[0], 'block');
 makeVisible(elements[1], 'block');
+scrollAdjustment();
 
 //PANEL INTERACTION
 panels.forEach(panel => {
@@ -102,7 +109,21 @@ for(let i = 0; i < links.length; i++) {
 
 }
 
+function scrollAdjustment() {
+    window.addEventListener('DOMContentLoaded', function() {
+        const bgImage = document.querySelector('.bg-image');
+        const canvas = document.querySelector('.canvas');
+        
+        container.addEventListener('scroll', function() {
+          const scrollTop = container.scrollTop;
+          canvas.style.top = `${scrollTop}px`;
+          bgImage.style.top = `${scrollTop}px`;
+        });
+        
+    });
+}
 function goToHome() {
+    currentPage = 0;
     resetNavTitles();
     links[0].innerText = '☺'
     clearContainer();
@@ -112,6 +133,7 @@ function goToHome() {
 }
 
 function goToProjects() {
+    currentPage = 1;
     resetNavTitles();
     links[1].innerText = '☺'
     clearContainer();
@@ -120,6 +142,7 @@ function goToProjects() {
 }
 
 function goToResume() {
+    currentPage = 2;
     resetNavTitles();
     links[2].innerText = '☺'
     clearContainer();
@@ -127,6 +150,7 @@ function goToResume() {
 }
 
 function goToConnect() {
+    currentPage = 4;
     resetNavTitles();
     links[3].innerText = '☺'
     clearContainer();
@@ -150,7 +174,8 @@ function resetNavTitles() {
 function clearContainer() {
     elements.forEach(e => {
         e.value.style.display = 'none';
-    })
+    });
+    container.scrollTop = 0;
 }
 
 function makeVisible(object, type) {
