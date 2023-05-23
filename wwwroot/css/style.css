@@ -369,6 +369,7 @@ html, body {
 
     .container {
         padding: 0 2vw;
+        height: 80vh;
     }
 
     .nav-container {
