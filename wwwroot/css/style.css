@@ -71,6 +71,13 @@ html, body {
     cursor: pointer;
     transition: color 0.5s ease-in;
 }
+
+.icon2 {
+    display: none;
+    color: var(--accent);
+    
+}
+
 .icon:hover {
     color: var(--hover)
 }
@@ -351,24 +358,36 @@ html, body {
     font-weight: 300;
 }
 
+.dark-text {
+    background-color: var(--primary);
+    padding: 1vh 2vw;
+}
+
 /*-------------END-TEXT---------------*/
 /*-------------MEDIA---------------*/
 @media only screen and (max-width: 600px) {
 
-    html, body {
-        overflow:auto
-    }
     .container {
         padding: 0 2vw;
-        overflow-y: scroll;
     }
 
+    .nav-container {
+        padding-right: 6vw;
+    }
+    .icon {
+        display: none;
+    }
+
+    .icon2 {
+        display: block;
+    }
     .home-body {
         position:inherit;
         top: 25vh;
         align-items: start;
         flex-direction: column;
         justify-content: center;
+        
     }
 
     .credentials-container {
@@ -379,7 +398,45 @@ html, body {
         font-size: 12px;
     }
 
+    .panel-container {
+        padding-top: 2vh;
+        flex-wrap: wrap;
+        height: 80vh; /* Adjust the height as per your requirement */
+        align-content: center; /* Align panels to the top */
+        flex-direction: column;
+        justify-content: center;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        
+    }
 
+    .panel {
+        width: 90vw;
+        height: 60px;
+        flex: 1;
+        transition: none;
+        border-radius: 5px;
+    }
+
+    .panel.active {
+        flex: 1;
+    }
+
+    .panel h3 {
+        font-size: 18px;
+        opacity: 1;
+        transition: none;
+        bottom: 1vh;
+        left: 2vw;
+        background-color: var(--primary);
+        padding: 1vh 2vw;
+        text-shadow: 1px 1px 4px var(--primary);
+    }
+
+    .panel.active h3 {
+        opacity: 1;
+        
+    }
     
   }
 
