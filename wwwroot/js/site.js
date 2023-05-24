@@ -1,6 +1,6 @@
 //GLOBAL VARIABLES//
 let currentPage = 0;
-const container = document.querySelector('.container');
+const container = document.querySelector('.canvas');
 
 //PROJECTS ELEMENTS//
 const panels = document.querySelectorAll('.panel');
@@ -13,7 +13,8 @@ const elements = [
     {name: 'projects', value: document.getElementById('projectCatContainer') },     //2
     {name: 'webProjects', value: document.getElementById('webProjectsContainer') },  //3
     {name: 'resume', value: document.getElementById('resumeContainer') },            //4
-    {name: 'connect', value: document.getElementById('connectContainer')}           //5
+    {name: 'connect', value: document.getElementById('connectContainer')},          //5
+    {name: 'projectContainer', value: document.getElementById('projectContainer')}
 ];
 
 const navIcons = [
@@ -42,6 +43,7 @@ scrollAdjustment();
 
 //PANEL INTERACTION
 panels.forEach(panel => {
+    console.log(panel);
     panel.addEventListener('mouseover', () => {
         removeActiveClasses();
         panel.classList.add('active');
@@ -62,11 +64,8 @@ panels.forEach(panel => {
                 case panels[2]:
                     console.log('Desktop Projects');
                     break;
-                case panels[3]:
-                    //window.open('https://lethargiesleeps.github.io/FrontEndProjects', '_blank');
-                    break;
                 default:
-                    console.log('404: Panel Not Found');
+                    displayProject(panel.id);
             }
         }
     })
@@ -84,6 +83,8 @@ for(let i = 0; i < links.length; i++) {
     });
 
     links[i].addEventListener("click", () => {
+        if(borderContainer.classList.contains('container-active'))
+            borderContainer.classList.remove('container-active');
         switch(i) {
             case 0:
                 pageTitle.innerText = "Michaël Landry - Portfolio";
@@ -158,8 +159,49 @@ function goToConnect() {
     makeVisible(elements[5], 'flex');
 }
 
+function displayProject(projectName) {
+    clearContainer();
+    borderContainer.classList.add('container-active');
+    makeVisible(elements[6], 'block');
+    const name = document.getElementById('projectName');
+    const img = document.getElementById('projectImage');
+    const date = document.getElementById('projectDate');
+    const version = document.getElementById('projectVersion')
+    const description = document.getElementById('projectDescription');
+    const link = document.getElementById('projectHyper');
+    const project = getProject(projectName);
+    const cancel = document.getElementById('cancelProject');
+
+    name.innerText = project.name;
+    date.innerText = project.date;
+    img.src = project.imageUrl;
+    img.alt = project.imageAlt;
+    version.innerText = project.version;
+    description.innerText = project.description;
+    link.href = project.link;
+
+    cancel.addEventListener('click', () => {
+        borderContainer.classList.remove('container-active');
+        switch(project.projectType) {
+            case 'web':
+                clearContainer();
+                makeVisible(elements[3], 'flex');
+                break;
+            default:
+                break;
+        }
+    })
+}
 
 //INTERNAL FUNCTIONS//
+function getProject(projectName) {
+    let project;
+    projectData.forEach(p => {
+        if(projectName === p.projectName)
+            project = p;
+    })
+    return project;
+}
 function removeActiveClasses() {
     panels.forEach(panel => {
         panel.classList.remove('active');
@@ -184,5 +226,17 @@ function makeVisible(object, type) {
     object.value.style.display = type;
 }
 
+const projectData = [
+    {   name: 'Grade Genius',
+        description: 'An web-based tool aimed at students of all levels to help them track and review their course progress.',
+        date: 'Unreleased',
+        version: 'v0.1',
+        link: 'https://lethargiesleeps.github.io',
+        imageUrl: './wwwroot/images/projectcovers/myreportcard.png',
+        imageAlt: 'Grade Genius splash page',
+        projectName: 'gradeGenius',
+        projectType: 'web'
 
+    }
+];
 
