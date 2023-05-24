@@ -138,9 +138,39 @@ html, body {
     flex-direction: column;
 }
 
+.connect-container {
+    margin-top: 25vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: start;
+    color: var(--accent);
+    font-family: var(--fontFamily);
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.connect-item {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5vh;
+    align-items: center;
+    cursor: pointer;
+}
+
+.connect-icon {
+    margin-right: 1vw;
+}
+.socials {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 20px;
+}
 .credentials-container {
     color: var(--accent);
 }
+
 
 .resume-container {
     display: flex;
@@ -270,6 +300,37 @@ html, body {
    top: -2vh; 
 }
 
+.socials a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.5s ease-in;
+    margin-right: 2vw;
+}
+
+.socials a:visited {
+    color: var(--accent);
+    text-decoration: none;
+}
+.socials a:hover {
+    color: var(--hover)
+}
+.connect-item a {
+    text-decoration: none;
+    color: var(--accent);
+    font-size: 24px;
+    transition: color 0.5s ease-in;
+}
+
+.connect-item a:visited {
+    color: var(--accent);
+    text-decoration: none;
+    
+}
+
+.connect-item a:hover {
+    color: var(--hover);
+}
+
 .education h2 {
     font-family: var(--fontFamily);
     font-weight: 400;
@@ -370,7 +431,7 @@ html, body {
 
     .container {
         padding: 2vh 2vw;
-        height: 80vh;
+        height: 60vh;
         overflow-y: scroll;
     }
     
@@ -390,8 +451,7 @@ html, body {
         top: 25vh;
         align-items: start;
         flex-direction: column;
-        justify-content: center;
-        
+        justify-content: center; 
     }
 
     .credentials-container {
@@ -437,6 +497,24 @@ html, body {
         text-shadow: 1px 1px 4px var(--primary);
     }
 
+    .connect-icon {
+        margin-right: 4vw;
+    }
+    .connect-item a {
+        font-size: 18px;
+    }
+
+    .connect-container {
+        background-color: rgba(29, 32, 29, 0.75);
+        padding: 2vh 2vw;
+    }
+
+    .socials a {
+        margin-right: 24vw;
+    }
+    .socials {
+        font-size: 18px;
+    }
     .panel.active h3 {
         opacity: 1;
         

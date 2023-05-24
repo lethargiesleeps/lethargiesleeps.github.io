@@ -12,7 +12,8 @@ const elements = [
     {name: 'blurb', value: document.getElementById('homeBlurb') },                  //1
     {name: 'projects', value: document.getElementById('projectCatContainer') },     //2
     {name: 'webProjects', value: document.getElementById('webProjectsContainer') },  //3
-    {name: 'resume', value: document.getElementById('resumeContainer') }             //4
+    {name: 'resume', value: document.getElementById('resumeContainer') },            //4
+    {name: 'connect', value: document.getElementById('connectContainer')}           //5
 ];
 
 const navIcons = [
@@ -154,6 +155,7 @@ function goToConnect() {
     resetNavTitles();
     links[3].innerText = '☺'
     clearContainer();
+    makeVisible(elements[5], 'flex');
 }
 
 
