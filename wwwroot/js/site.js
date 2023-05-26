@@ -14,11 +14,13 @@ const elements = [
     {name: 'webProjects', value: document.getElementById('webProjectsContainer') },  //3
     {name: 'resume', value: document.getElementById('resumeContainer') },            //4
     {name: 'connect', value: document.getElementById('connectContainer')},          //5
-    {name: 'projectContainer', value: document.getElementById('projectContainer')}
+    {name: 'projectContainer', value: document.getElementById('projectContainer')},
+    {name: 'mobileProjects', value: document.getElementById('mobileProjectsContainer')} //7
 ];
 
 const navIcons = [
-    {name: 'webProjectsToProjects', value: document.getElementById('webProjectsToProjects')}
+    {name: 'webProjectsToProjects', value: document.getElementById('webProjectsToProjects')},
+    {name: 'mobileProjectsToProjects', value: document.getElementById('mobileProjectsToProjects')}
 ];
 
 
@@ -28,6 +30,9 @@ navIcons.forEach(n => {
     n.value.addEventListener('click', () => {
         switch(n.name) {
             case 'webProjectsToProjects':
+                goToProjects();
+                break;
+            case 'mobileProjectsToProjects':
                 goToProjects();
                 break;
         }
@@ -40,6 +45,7 @@ clearContainer();
 makeVisible(elements[0], 'block');
 makeVisible(elements[1], 'block');
 scrollAdjustment();
+
 
 //PANEL INTERACTION
 panels.forEach(panel => {
@@ -59,7 +65,9 @@ panels.forEach(panel => {
                     makeVisible(elements[3], 'flex');
                     break;
                 case panels[1]:
-                    console.log('Mobile Projects');
+                    clearContainer();
+                    makeVisible(elements[7], 'flex');
+                    console.log('Mobile')
                     break;
                 case panels[2]:
                     console.log('Desktop Projects');
@@ -163,12 +171,15 @@ function displayProject(projectName) {
     clearContainer();
     borderContainer.classList.add('container-active');
     makeVisible(elements[6], 'block');
+    const projContainer = document.querySelector('.project');
     const name = document.getElementById('projectName');
     const img = document.getElementById('projectImage');
     const date = document.getElementById('projectDate');
     const version = document.getElementById('projectVersion')
     const description = document.getElementById('projectDescription');
     const link = document.getElementById('projectHyper');
+    const stack = document.getElementById('projectTools');
+    const repo = document.getElementById('projectRepo')
     const project = getProject(projectName);
     const cancel = document.getElementById('cancelProject');
 
@@ -179,6 +190,30 @@ function displayProject(projectName) {
     version.innerText = project.version;
     description.innerText = project.description;
     link.href = project.link;
+    stack.innerText = `Built with: ${project.stack}`;
+
+    if(project.resizeImage) {
+        img.classList.remove('project-image');
+        img.classList.add('project-image-resize');
+        description.style.fontSize = '14px';
+        description.style.marginBottom = '1vh';
+        projContainer.style.marginTop = '-6vh';
+
+    }
+    else {
+        img.classList.remove('project-image-resize');
+        img.classList.add('project-image');
+        description.style.fontSize = '18px';
+        description.style.marginBottom = '1vh';
+        projContainer.style.marginTop = '0';
+    }
+
+    if(project.repoLink !== 'none')
+        repo.style.display = 'block';
+    else
+        repo.style.display = 'none';
+
+    
 
     cancel.addEventListener('click', () => {
         borderContainer.classList.remove('container-active');
@@ -187,6 +222,9 @@ function displayProject(projectName) {
                 clearContainer();
                 makeVisible(elements[3], 'flex');
                 break;
+            case 'mobile':
+                clearContainer();
+                makeVisible(elements[7], 'flex');
             default:
                 break;
         }
@@ -229,14 +267,74 @@ function makeVisible(object, type) {
 const projectData = [
     {   name: 'Grade Genius',
         description: 'An web-based tool aimed at students of all levels to help them track and review their course progress.',
-        date: 'Unreleased',
+        date: 'In Production',
         version: 'v0.1',
         link: 'https://lethargiesleeps.github.io',
         imageUrl: './wwwroot/images/projectcovers/myreportcard.png',
         imageAlt: 'Grade Genius splash page',
         projectName: 'gradeGenius',
-        projectType: 'web'
+        projectType: 'web',
+        stack: 'Laravel 10, MySQL, Apache',
+        repoLink: 'none',
+        resizeImage: false
 
+    },
+    {
+        name: 'Front End Projects',
+        description: 'A collection of front end expirements. I am constantly adding to this project, it is mostly a playground for me to play with HTML/CSS/JS.',
+        date: 'March 01, 2023',
+        version: 'v1.0.5',
+        link: 'https://lethargiesleeps.github.io/FrontEndProjects/',
+        imageUrl: './wwwroot/images/projectcovers/FrontEndProjects.jpg',
+        imageAlt: 'Front End Projects splash page',
+        projectName: 'frontEndProjects',
+        projectType: 'web',
+        stack: 'HTML5, CSS3, JavaScript, Bootstrap',
+        repoLink: 'https://github.com/lethargiesleeps/FrontEndProjects',
+        resizeImage: false
+
+    },
+    {
+        name: 'Pokémon Crystal Password Cracker',
+        description: "A simple web tool that calculates a password used in the Game Boy game Pokémon Crystal. In the game, users must enter a password to change the game's internal clock.",
+        date: 'July 21st, 2022',
+        version: 'v1.0',
+        link: 'https://lethargiesleeps.github.io/CrystalPasswordCracker/',
+        imageUrl: './wwwroot/images/projectcovers/crystalpasswordcracker.png',
+        imageAlt: 'Crystal Password Cracker splash screen',
+        stack: 'HTML5, CSS3, JavaScript',
+        projectName: 'passwordCracker',
+        projectType: 'web',
+        repoLink: 'https://github.com/lethargiesleeps/CrystalPasswordCracker/',
+        resizeImage: false
+    },
+    {
+        name: 'CanTrackVote Benchmarker',
+        description: 'A tool used to monitor mobile bandwidth usage of an app by making set background API calls. This app is part of a bigger project, CanTrackVote, that I will add to this site once more work has been completed.',
+        date: 'March 27th, 2023',
+        version: 'v1.1.1',
+        link: 'https://github.com/lethargiesleeps/CTV-Benchmarker/releases/tag/v1.1.1',
+        imageUrl: './wwwroot/images/projectcovers/CTV2.jpg',
+        imageAlt: 'CTV Benchmarker Home Screen',
+        stack: 'React-Native, Expo',
+        projectName: 'ctvBenchmark',
+        projectType: 'mobile',
+        repoLink: 'https://github.com/lethargiesleeps/CTV-Benchmarker',
+        resizeImage: true
+    },
+    {
+        name: 'Android Sandbox',
+        description: 'A collection of small Android projects. The goal is to practice my Java and Kotlin skills in the context of Android app development with Android Studio.',
+        date: 'March 1st, 2023',
+        version: 'v0.0.2',
+        link: 'https://github.com/lethargiesleeps/AndroidStudioProjects',
+        imageUrl: './wwwroot/images/projectcovers/androidprojects.png',
+        imageAlt: 'Counter Project from Android Sandbox',
+        stack: 'Java, Kotlin, Android',
+        projectName: 'androidSandbox',
+        projectType: 'mobile',
+        repoLink: 'none',
+        resizeImage: true
     }
 ];
 

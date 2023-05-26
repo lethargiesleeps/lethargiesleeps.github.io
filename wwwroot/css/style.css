@@ -1,7 +1,7 @@
 /*-------------GLOBAL---------------*/
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap');
 :root {
-    --fontFamily: 'Quicksand', sans-serif;
+    --fontFamily: 'Poppins', sans-serif;
     --primary: #1d201d;
     --accent: #e7e8e3;
     --hover: #aeb1a0;
@@ -48,7 +48,7 @@ html, body {
     margin: 0 2vw;
     font-family: var(--fontFamily);
     color: var(--accent);
-    font-weight: 300;
+    font-weight: 200;
     transition: var(--color-trans);
     cursor: pointer;
 }
@@ -160,6 +160,12 @@ html, body {
     width: 70%;
     height: 100%;
 }
+
+.project-image-resize {
+    margin-top: -2vh;
+    height: 40vh;
+    width: 10vw;
+}
 .container-hover {
     border-color: var(--primary);
     flex-direction: column;
@@ -189,23 +195,30 @@ html, body {
 .connect-icon {
     margin-right: 1vw;
 }
+
 .socials {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     font-size: 20px;
 }
+
+.socials a span {
+    margin-right: 4vw;
+}
+
 .credentials-container {
     color: var(--accent);
 }
 
-
 .resume-container {
+    margin-top: -3vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     color: var(--accent);
     text-shadow: 4px 4px 8px var(--primary);
+    
 }
 
 .resume-bottom {
@@ -219,8 +232,14 @@ html, body {
     margin-right: 2vw;
 }
 
+.resume-top {
+    margin-bottom: -1vh;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 1vh;
+    margin-right: 75%;
+}
 .resume-top .name {
-    margin-bottom: -3vh;
+    margin-bottom: -1vh;
 }
 
 .skills-sub {
@@ -239,8 +258,8 @@ html, body {
 
 .location {
     margin-bottom: -2vh;
-    border-bottom: 2px solid var(--accent);
-    margin-right: 75%;
+    margin-top: -4vh;
+    
 }
 .experience ul {
     list-style-type: none;
@@ -260,6 +279,9 @@ html, body {
     padding-right: 0;
 }
 
+.education {
+    margin-top: -3.5vh;
+}
 .blurb-container {
     color: var(--accent);
     text-align: left;
@@ -312,7 +334,7 @@ html, body {
     transition: color 0.5s ease-in;
     font-size: 32px;
     cursor: pointer;
-    margin-bottom: 2vh;
+    margin-bottom: -4vh;
     width: 1vw;
 }
 
@@ -322,30 +344,61 @@ html, body {
 
 .project-date {
     font-size: 14px;
-    margin-bottom: -2vh;
+    margin-bottom: -3vh;
+    font-weight: 200;
+    
 }
 
 .project-version {
     font-weight: 300;
+    margin-bottom: -0.5vh
+    
 }
 
 .project-description {
     padding-right: 6vw;
     word-wrap: break-word;
     font-size: 18px;
+    font-weight: 200;
 }
 
-.project a {
+.project-tools {
+    margin-bottom: -1vh;
+}
+
+.project-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 2vh;
+}
+.project-repo i{
     color: var(--accent);
     transition: color 0.5s ease-in;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.project-repo i:hover {
+    color: var(--hover);
+    
+}
+
+#projectHyper {
+    color: var(--accent);
+    font-weight: 400;
+    cursor: pointer !important;
+    transition: color 0.5s ease-in;
+    margin-right: 1vw;
 
 }
 
-.project a:hover {
-    color: var(--primary);
+#projectHyper:hover {
+    color: var(--hover);
 }
 
-.project a:visited {
+.project-link:visited {
     color: var(--accent);
 }
 
@@ -355,8 +408,12 @@ html, body {
     transition: opacity 0.4s ease-in 0.3s;
 }
 
+.project-name {
+    font-weight: 300;
+}
 .panel h3 {
     position: absolute;
+    font-weight: 200;
     font-size: 24px;
     bottom: 30px;
     left: 30px;
@@ -412,7 +469,7 @@ html, body {
 .education ul li h3 {
     font-family: var(--fontFamily);
     font-weight: 300;
-    font-size: 16px;
+    font-size: 14px;
     margin-bottom: -2vh;
 }
 
@@ -420,7 +477,7 @@ html, body {
     font-family: var(--fontFamily);
     font-weight: 400;
     font-style: italic;
-    font-size: 12px;
+    font-size: 10px;
     margin-bottom: -1.5vh;
 }
 .skills h2 {
@@ -431,8 +488,8 @@ html, body {
 
 .skills-sub div h3 {
     font-family: var(--fontFamily);
-    font-weight: 400;
-    font-size: 16px;
+    font-weight: 300;
+    font-size: 14px;
     margin-bottom: -1vh;
 }
 
@@ -459,7 +516,7 @@ html, body {
 
 .experience ul li h3 {
     font-family: var(--fontFamily);
-    font-weight: 400;
+    font-weight: 300;
     font-size: 16px;
     margin-bottom: -2vh;
 }
@@ -467,7 +524,7 @@ html, body {
 
 .experience ul li h4 {
     font-family: var(--fontFamily);
-    font-weight: 300;
+    font-weight: 200;
     font-size: 12px;
     font-style: italic;
 }
@@ -479,7 +536,8 @@ html, body {
 
 .location h3 {
     font-family: var(--fontFamily);
-    font-weight: 300;
+    font-weight: 200;
+    font-size: 14px;
 }
 
 .title h3 {
@@ -498,29 +556,44 @@ html, body {
 }
 
 /*-------------END-TEXT---------------*/
+
 /*-------------MEDIA---------------*/
 @media only screen and (max-width: 600px) {
 
     .container {
         padding: 2vh 2vw;
-        height: 70vh;
+        height: 74vh;
         overflow-y: scroll;
     }
     
     .container.container-active {
         width: 90%;
         margin-left: 5vw;
+        height: 50%;
     }
 
     .project-container {
-        background-color: rgba(29, 32, 29, 0.75);
-        padding: 1vh 2vw;
+        background-color: rgba(29, 32, 29, 0.8);
+        padding: 2vh 3vw;
         margin-top: 0;
+        border-radius: 15px;
+    }
+    #projectHyper {
+        margin-right: 6vw;
     }
 
+    .project-repo {
+        padding-bottom: 3vh;
+        font-size: 24px;
+    }
     .project-image {
         width: 100%;
         height: 100%;
+    }
+
+    .project-image-resize {
+        width: 70vw;
+        height: 40vh;
     }
 
     .project-version {
@@ -564,7 +637,7 @@ html, body {
     }
 
     .panel-container {
-        padding-top: 1vh;
+        padding: 1vh 4vw 0 1vw;
         flex-wrap: wrap;
         height: 80vh; /* Adjust the height as per your requirement */
         align-content: center; /* Align panels to the top */
@@ -608,6 +681,7 @@ html, body {
     .connect-container {
         background-color: rgba(29, 32, 29, 0.75);
         padding: 2vh 2vw;
+        margin-top: 17vh;
     }
 
     .socials a {
@@ -633,19 +707,28 @@ html, body {
         color: var(--accent);
         text-shadow: 4px 4px 8px var(--primary);
         background-color: rgba(29, 32, 29, 0.75);
-        padding: 1vh 1vw;
+        padding: -2vh 1vw;
     }
 
     .resume-bottom {
         flex-direction: column;
         overflow-y: auto;
     }
+
+    .resume-top {
+        margin-right: 0;
+        border: none;
+    }
     .resume-top .location {
         font-size: 10px;
         margin-bottom: 1vh;
+        margin-top: 1vh;
         
     }
 
+    .education {
+        margin-top: 1vh;
+    }
     .education h2 {
         font-size: 16px;
         margin-bottom: 1vh;
@@ -669,6 +752,7 @@ html, body {
 
     .experience ul li h3 {
         font-size: 14px;
+        margin-bottom: -10px;
         
     }
 
@@ -708,4 +792,18 @@ html, body {
     
   }
 
+  @media only screen and (orientation: landscape) and (max-width: 600px) {
+    body {
+      -webkit-transform: rotate(-90deg);
+      -moz-transform: rotate(-90deg);
+      -o-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
+      transform: rotate(-90deg);
+      
+    }
+
+    .container {
+        overflow-y: scroll;
+    }
+  }
   /*-------------END-MEDIA---------------*/
