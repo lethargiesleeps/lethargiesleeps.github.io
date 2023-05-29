@@ -642,8 +642,10 @@ html, body {
         display: block;
     }
     .home-body {
+        background-color: rgba(29, 32, 29, 0.75);
+        padding: 2vh 2vw;
         position:inherit;
-        top: 25vh;
+        top: 20vh;
         align-items: start;
         flex-direction: column;
         justify-content: center; 
