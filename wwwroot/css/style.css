@@ -572,7 +572,7 @@ html, body {
 @media only screen and (max-width: 600px) {
 
     .container {
-        padding: 2vh 2vw;
+        padding: 02vw;
         height: 74vh;
         overflow-y: scroll;
     }
@@ -590,7 +590,7 @@ html, body {
 
     .project-container {
         background-color: rgba(29, 32, 29, 0.8);
-        padding: 3vh 3vw;
+        padding: 1vh 3vw;
         margin-top: 0;
         border-radius: 15px;
     }
@@ -645,7 +645,7 @@ html, body {
         background-color: rgba(29, 32, 29, 0.75);
         padding: 2vh 2vw;
         position:inherit;
-        top: 20vh;
+        top: 15vh;
         align-items: start;
         flex-direction: column;
         justify-content: center; 
@@ -668,6 +668,7 @@ html, body {
         justify-content: center;
         overflow-y: scroll;
         overflow-x: hidden;
+        margin-top: 0;
         
     }
 
@@ -679,6 +680,10 @@ html, body {
         border-radius: 5px;
     }
 
+    .panel-nav {
+        padding-top: 0;
+        margin-top: 0;
+    }
     .panel.active {
         flex: 1;
     }
