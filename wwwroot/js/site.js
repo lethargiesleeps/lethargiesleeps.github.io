@@ -185,28 +185,31 @@ function displayProject(projectName) {
 
     name.innerText = project.name;
     date.innerText = project.date;
-    img.src = project.imageUrl;
-    img.alt = project.imageAlt;
+    img.style.backgroundImage = `url('${project.imageUrl}')`
     version.innerText = project.version;
     description.innerText = project.description;
     link.href = project.link;
     stack.innerText = `Built with: ${project.stack}`;
+    const fontSize = window.getComputedStyle(img).getPropertyValue('background-image');
+    console.log(fontSize);
+    
 
-    if(project.resizeImage) {
-        img.classList.remove('project-image');
-        img.classList.add('project-image-resize');
-        description.style.fontSize = '14px';
-        description.style.marginBottom = '1vh';
-        projContainer.style.marginTop = '-6vh';
-
-    }
-    else {
-        img.classList.remove('project-image-resize');
-        img.classList.add('project-image');
-        description.style.fontSize = '18px';
-        description.style.marginBottom = '1vh';
-        projContainer.style.marginTop = '0';
-    }
+    // if(project.resizeImage) {
+    //     img.classList.remove('project-image');
+    //     img.classList.add('project-image-resize');
+    //     description.style.fontSize = '14px';
+    //     description.style.marginBottom = '1vh';
+    //     projContainer.style.marginTop = '-6vh';
+    // }
+    // else {
+        
+    //     img.classList.remove('project-image-resize');
+    //     img.classList.add('project-image');
+    //     description.style.fontSize = '18px';
+    //     description.style.marginBottom = '1vh';
+    //     projContainer.style.marginTop = '0';
+        
+    // }
 
     if(project.repoLink !== 'none')
         repo.style.display = 'block';
@@ -270,7 +273,7 @@ const projectData = [
         date: 'In Production',
         version: 'v0.1',
         link: 'https://lethargiesleeps.github.io',
-        imageUrl: './wwwroot/images/projectcovers/myreportcard.png',
+        imageUrl: '../wwwroot/images/projectcovers/myreportcard.png',
         imageAlt: 'Grade Genius splash page',
         projectName: 'gradeGenius',
         projectType: 'web',
@@ -285,7 +288,7 @@ const projectData = [
         date: 'March 01, 2023',
         version: 'v1.0.5',
         link: 'https://lethargiesleeps.github.io/FrontEndProjects/',
-        imageUrl: './wwwroot/images/projectcovers/FrontEndProjects.jpg',
+        imageUrl: '../wwwroot/images/projectcovers/FrontEndProjects.jpg',
         imageAlt: 'Front End Projects splash page',
         projectName: 'frontEndProjects',
         projectType: 'web',
@@ -300,7 +303,7 @@ const projectData = [
         date: 'July 21st, 2022',
         version: 'v1.0',
         link: 'https://lethargiesleeps.github.io/CrystalPasswordCracker/',
-        imageUrl: './wwwroot/images/projectcovers/crystalpasswordcracker.png',
+        imageUrl: '../wwwroot/images/projectcovers/crystalpasswordcracker.png',
         imageAlt: 'Crystal Password Cracker splash screen',
         stack: 'HTML5, CSS3, JavaScript',
         projectName: 'passwordCracker',
@@ -314,7 +317,7 @@ const projectData = [
         date: 'March 27th, 2023',
         version: 'v1.1.1',
         link: 'https://github.com/lethargiesleeps/CTV-Benchmarker/releases/tag/v1.1.1',
-        imageUrl: './wwwroot/images/projectcovers/CTV2.jpg',
+        imageUrl: '../wwwroot/images/projectcovers/CTV2.jpg',
         imageAlt: 'CTV Benchmarker Home Screen',
         stack: 'React-Native, Expo',
         projectName: 'ctvBenchmark',
@@ -328,7 +331,7 @@ const projectData = [
         date: 'March 1st, 2023',
         version: 'v0.0.2',
         link: 'https://github.com/lethargiesleeps/AndroidStudioProjects',
-        imageUrl: './wwwroot/images/projectcovers/androidprojects.png',
+        imageUrl: '../wwwroot/images/projectcovers/androidprojects.png',
         imageAlt: 'Counter Project from Android Sandbox',
         stack: 'Java, Kotlin, Android',
         projectName: 'androidSandbox',

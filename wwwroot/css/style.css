@@ -144,7 +144,7 @@ html, body {
 }
 
 .project {
-    padding: 0 3vw;
+    padding: 7vh 2vw;
     font-family: var(--fontFamily);
     color: var(--accent);
     display: flex;
@@ -153,19 +153,23 @@ html, body {
 }
 
 .project-container div {
-    margin-top: -2vh;
+    margin-top: -4vh;
 }
 
 .project-image {
-    width: 70%;
-    height: 100%;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: var(--accent);
+    cursor: none;
+    flex: 1;
+    padding-top: 40vh;
+    padding-left: 0;
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.25);
+    font-family: var(--fontFamily);
 }
 
-.project-image-resize {
-    margin-top: -2vh;
-    height: 40vh;
-    width: 10vw;
-}
 .container-hover {
     border-color: var(--primary);
     flex-direction: column;
@@ -349,6 +353,7 @@ html, body {
     
 }
 
+
 .project-version {
     font-weight: 300;
     margin-bottom: -0.5vh
@@ -409,6 +414,12 @@ html, body {
 }
 
 .project-name {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: var(--primary);
+    color: var(--accent);
+    padding: 1vh 1vw;
     font-weight: 300;
 }
 .panel h3 {
@@ -570,6 +581,7 @@ html, body {
         width: 90%;
         margin-left: 5vw;
         height: 50%;
+        overflow-y: scroll;
     }
 
     .project-container {
@@ -592,8 +604,7 @@ html, body {
     }
 
     .project-image-resize {
-        width: 70vw;
-        height: 40vh;
+        padding: 10vh 10vw;
     }
 
     .project-version {
@@ -606,6 +617,12 @@ html, body {
 
     .cancel {
         font-size: 14px;
+        
+    }
+
+    .project-name {
+        font-size: 20px;
+        margin-top: 6vh;
     }
     .project-link {
         margin-bottom: 3vh;
