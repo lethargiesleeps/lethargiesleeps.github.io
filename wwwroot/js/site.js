@@ -8,24 +8,30 @@ const links = document.querySelectorAll('.nav-link');
 const borderContainer = document.getElementById('container');
 
 const elements = [
-    {name: 'credentials', value: document.getElementById('credentialsContainer') }, //0
-    {name: 'blurb', value: document.getElementById('homeBlurb') },                  //1
-    {name: 'projects', value: document.getElementById('projectCatContainer') },     //2
-    {name: 'webProjects', value: document.getElementById('webProjectsContainer') },  //3
-    {name: 'resume', value: document.getElementById('resumeContainer') },            //4
-    {name: 'connect', value: document.getElementById('connectContainer')},          //5
-    {name: 'projectContainer', value: document.getElementById('projectContainer')},
-    {name: 'mobileProjects', value: document.getElementById('mobileProjectsContainer')} //7
+    { name: 'home', value: document.getElementById('homeBody') }, //0
+    { name: 'blurb', value: document.getElementById('homeBlurb') },                  //1
+    { name: 'projects', value: document.getElementById('projectCatContainer') },     //2
+    { name: 'webProjects', value: document.getElementById('webProjectsContainer') },  //3
+    { name: 'resume', value: document.getElementById('resumeContainer') },            //4
+    { name: 'connect', value: document.getElementById('connectContainer') },          //5
+    { name: 'projectContainer', value: document.getElementById('projectContainer') },
+    { name: 'mobileProjects', value: document.getElementById('mobileProjectsContainer') }, //7
+    { name: 'desktopProjects', value: document.getElementById('desktopProjectsContainer') }
 ];
 
 const navIcons = [
-    {name: 'webProjectsToProjects', value: document.getElementById('webProjectsToProjects')},
-    {name: 'mobileProjectsToProjects', value: document.getElementById('mobileProjectsToProjects')}
+    { name: 'webProjectsToProjects', value: document.getElementById('webProjectsToProjects') },
+    { name: 'mobileProjectsToProjects', value: document.getElementById('mobileProjectsToProjects') },
+    { name: 'desktopProjectsToProjects', value: document.getElementById('desktopProjectsToProjects') }
 ];
 
 
 
-//PANEL NAV
+
+/**
+ * Project Panel Navigation
+ * When projects in a category exceeds 3, add project navigation inside navIcons, then add case here.
+ */
 navIcons.forEach(n => {
     n.value.addEventListener('click', () => {
         switch(n.name) {
@@ -35,11 +41,16 @@ navIcons.forEach(n => {
             case 'mobileProjectsToProjects':
                 goToProjects();
                 break;
+            case 'desktopProjectsToProjects':
+                goToProjects();
         }
     });
 });
 
-//INIT
+/**
+ * Initial view here when user first enters site.
+ */
+//TODO: dummy loading screen to allow images and packages to load.
 links[0].innerText = '☺';
 clearContainer();
 makeVisible(elements[0], 'block');
@@ -47,16 +58,22 @@ makeVisible(elements[1], 'block');
 scrollAdjustment();
 
 
-//PANEL INTERACTION
+/**
+ * Panel interactions.
+ */
 panels.forEach(panel => {
-    console.log(panel);
+
+    // Adds 'active' class on hover (desktop only)
     panel.addEventListener('mouseover', () => {
         removeActiveClasses();
         panel.classList.add('active');
     });
 
+    //Removes 'active' class when mouse leaves panel (desktop only)
     panel.addEventListener('mouseout', removeActiveClasses);
 
+    //Navigates to appropriate section. Default will load the project view, add project category here if it exceeds
+    //the initial three.
     panel.addEventListener('click', () => {
         if(panel.classList.contains('active')) {
             switch(panel) {
@@ -67,10 +84,10 @@ panels.forEach(panel => {
                 case panels[1]:
                     clearContainer();
                     makeVisible(elements[7], 'flex');
-                    console.log('Mobile')
                     break;
                 case panels[2]:
-                    console.log('Desktop Projects');
+                    clearContainer();
+                    makeVisible(elements[8], 'flex');
                     break;
                 default:
                     displayProject(panel.id);
@@ -80,8 +97,12 @@ panels.forEach(panel => {
 
 })
 
-//MAIN NAV INTERACTION
+
+/**
+ * Primary menu navigation
+ */
 for(let i = 0; i < links.length; i++) {
+
     links[i].addEventListener("mouseover", () => {
         links[i].classList.add('on-hover-nav');
     });
@@ -91,8 +112,10 @@ for(let i = 0; i < links.length; i++) {
     });
 
     links[i].addEventListener("click", () => {
+        //Removes container change if navigating from project to other menu item.
         if(borderContainer.classList.contains('container-active'))
             borderContainer.classList.remove('container-active');
+
         switch(i) {
             case 0:
                 pageTitle.innerText = "Michaël Landry - Portfolio";
@@ -113,12 +136,13 @@ for(let i = 0; i < links.length; i++) {
             default:
                 pageTitle.innerText = "Michaël Landry - 404";
         }
-        
-        
     });
 
 }
 
+/**
+ * Ensures the page is always at top if navigating pages, mostly used for mobile version.
+ */
 function scrollAdjustment() {
     window.addEventListener('DOMContentLoaded', function() {
         const bgImage = document.querySelector('.bg-image');
@@ -132,6 +156,10 @@ function scrollAdjustment() {
         
     });
 }
+
+/**
+ * Goes to home page
+ */
 function goToHome() {
     currentPage = 0;
     resetNavTitles();
@@ -142,6 +170,9 @@ function goToHome() {
     
 }
 
+/**
+ * Goes to projects page
+ */
 function goToProjects() {
     currentPage = 1;
     resetNavTitles();
@@ -151,6 +182,9 @@ function goToProjects() {
     
 }
 
+/**
+ * Goes to resume page
+ */
 function goToResume() {
     currentPage = 2;
     resetNavTitles();
@@ -159,6 +193,9 @@ function goToResume() {
     makeVisible(elements[4], 'flex');
 }
 
+/**
+ * Goes to connect page
+ */
 function goToConnect() {
     currentPage = 4;
     resetNavTitles();
@@ -167,11 +204,15 @@ function goToConnect() {
     makeVisible(elements[5], 'flex');
 }
 
+/**
+ * Parses a project to be display from JSON
+ * @param {string} projectName Project ID passed to retrieve project from JSON
+ */
 function displayProject(projectName) {
+    //Initializing
     clearContainer();
     borderContainer.classList.add('container-active');
     makeVisible(elements[6], 'block');
-    const projContainer = document.querySelector('.project');
     const name = document.getElementById('projectName');
     const img = document.getElementById('projectImage');
     const date = document.getElementById('projectDate');
@@ -180,9 +221,10 @@ function displayProject(projectName) {
     const link = document.getElementById('projectHyper');
     const stack = document.getElementById('projectTools');
     const repo = document.getElementById('projectRepo')
-    const project = getProject(projectName);
+    const project = getProject(projectName); //Gets project
     const cancel = document.getElementById('cancelProject');
 
+    //Parsing
     name.innerText = project.name;
     date.innerText = project.date;
     img.style.backgroundImage = `url('${project.imageUrl}')`
@@ -190,34 +232,14 @@ function displayProject(projectName) {
     description.innerText = project.description;
     link.href = project.link;
     stack.innerText = `Built with: ${project.stack}`;
-    const fontSize = window.getComputedStyle(img).getPropertyValue('background-image');
-    console.log(fontSize);
     
-
-    // if(project.resizeImage) {
-    //     img.classList.remove('project-image');
-    //     img.classList.add('project-image-resize');
-    //     description.style.fontSize = '14px';
-    //     description.style.marginBottom = '1vh';
-    //     projContainer.style.marginTop = '-6vh';
-    // }
-    // else {
-        
-    //     img.classList.remove('project-image-resize');
-    //     img.classList.add('project-image');
-    //     description.style.fontSize = '18px';
-    //     description.style.marginBottom = '1vh';
-    //     projContainer.style.marginTop = '0';
-        
-    // }
-
+    //Shows github icon if repo is public and available
     if(project.repoLink !== 'none')
         repo.style.display = 'block';
     else
         repo.style.display = 'none';
 
-    
-
+    //Returns user to correct page when navigating. projectType is defined in the JSON array.
     cancel.addEventListener('click', () => {
         borderContainer.classList.remove('container-active');
         switch(project.projectType) {
@@ -228,6 +250,10 @@ function displayProject(projectName) {
             case 'mobile':
                 clearContainer();
                 makeVisible(elements[7], 'flex');
+            case 'desktop':
+                clearContainer();
+                makeVisible(elements[8], 'flex');
+                break;
             default:
                 break;
         }
@@ -235,6 +261,11 @@ function displayProject(projectName) {
 }
 
 //INTERNAL FUNCTIONS//
+/**
+ * Gets correct project from projectData JSON array
+ * @param {string} projectName 
+ * @returns project object
+ */
 function getProject(projectName) {
     let project;
     projectData.forEach(p => {
@@ -243,12 +274,19 @@ function getProject(projectName) {
     })
     return project;
 }
+
+/**
+ * Removes class 'active' from a panel. Mostly used for desktop.
+ */
 function removeActiveClasses() {
     panels.forEach(panel => {
         panel.classList.remove('active');
     })
 }
 
+/**
+ * Sets main menu titles to default.
+ */
 function resetNavTitles() {
     links[0].innerText = 'Home';
     links[1].innerText = 'Projects';
@@ -256,17 +294,32 @@ function resetNavTitles() {
     links[3].innerText = 'Connect';
 }
 
+/**
+ * Clears everything except nav menu from screen. 
+ * This is used to make sure no elements conflict or overlap on page change
+ */
 function clearContainer() {
+    //FORCE FOR MOBILE, refactor later
+    
     elements.forEach(e => {
         e.value.style.display = 'none';
     });
     container.scrollTop = 0;
 }
 
+/**
+ * Makes certain elements visible on screen, to be used after clearContainer();
+ * @param {object} object The object to make visible, typically from elements array
+ * @param {string} type string representing css of 'display' css property of parent container/
+ * @see clearContainer
+ */
 function makeVisible(object, type) {
     object.value.style.display = type;
 }
 
+/**
+ * JSON for all projects in the portfolio
+ */
 const projectData = [
     {   name: 'Grade Genius',
         description: 'An web-based tool aimed at students of all levels to help them track and review their course progress.',
@@ -278,9 +331,7 @@ const projectData = [
         projectName: 'gradeGenius',
         projectType: 'web',
         stack: 'Laravel 10, MySQL, Apache',
-        repoLink: 'none',
-        resizeImage: false
-
+        repoLink: 'none'
     },
     {
         name: 'Front End Projects',
@@ -293,8 +344,7 @@ const projectData = [
         projectName: 'frontEndProjects',
         projectType: 'web',
         stack: 'HTML5, CSS3, JavaScript, Bootstrap',
-        repoLink: 'https://github.com/lethargiesleeps/FrontEndProjects',
-        resizeImage: false
+        repoLink: 'https://github.com/lethargiesleeps/FrontEndProjects'
 
     },
     {
@@ -308,8 +358,7 @@ const projectData = [
         stack: 'HTML5, CSS3, JavaScript',
         projectName: 'passwordCracker',
         projectType: 'web',
-        repoLink: 'https://github.com/lethargiesleeps/CrystalPasswordCracker/',
-        resizeImage: false
+        repoLink: 'https://github.com/lethargiesleeps/CrystalPasswordCracker/'
     },
     {
         name: 'CanTrackVote Benchmarker',
@@ -322,8 +371,7 @@ const projectData = [
         stack: 'React-Native, Expo',
         projectName: 'ctvBenchmark',
         projectType: 'mobile',
-        repoLink: 'https://github.com/lethargiesleeps/CTV-Benchmarker',
-        resizeImage: true
+        repoLink: 'https://github.com/lethargiesleeps/CTV-Benchmarker'
     },
     {
         name: 'Android Sandbox',
@@ -336,8 +384,33 @@ const projectData = [
         stack: 'Java, Kotlin, Android',
         projectName: 'androidSandbox',
         projectType: 'mobile',
-        repoLink: 'none',
-        resizeImage: true
+        repoLink: 'none'
+    },
+    {
+        name: 'Bonzi Buddy Port',
+        description: 'A port of the early 00s infamous desktop companion Bonzi Buddy for Windows 10 and 11 (spyware free!). Bonzi Buddy can tell jokes, facts, weather, recipes and news using a series of APIs.',
+        date: 'February 22nd, 2023',
+        version: 'v0.5',
+        link: 'https://github.com/lethargiesleeps/BonziBuddy',
+        imageUrl: '../wwwroot/images/bonzi/bonzi_news.jpg',
+        imageAlt: 'Bonzi on a desktop searching up the news.',
+        stack: 'C#, Microsoft Agent/DoubleAgent, WinForms',
+        projectName: 'bonziBuddy',
+        projectType: 'desktop',
+        repoLink: 'none'
+    },
+    {
+        name: 'SharpConverter',
+        description: 'Simple command line tool for Windows that converts to and from different number systems. Future versions will include IEEE conversion, and UNICODE/ASCII conversions.',
+        date: 'April 28th, 2022',
+        version: 'v0.4.1',
+        link: 'https://github.com/lethargiesleeps/SharpConverter/releases/tag/Latest',
+        imageUrl: '../wwwroot/images/projectcovers/sharp-converter.png',
+        imageAlt: 'SharpConverter main menu.',
+        stack: 'C#',
+        projectName: 'sharpConverter',
+        projectType: 'desktop',
+        repoLink: 'https://github.com/lethargiesleeps/SharpConverter'
     }
 ];
 

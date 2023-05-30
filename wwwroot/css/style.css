@@ -590,8 +590,8 @@ html, body {
 
     .project-container {
         background-color: rgba(29, 32, 29, 0.8);
-        padding: 1vh 3vw;
-        margin-top: 0;
+        padding: 2vh 3vw;
+        margin-top: -2vh;
         border-radius: 15px;
     }
     
@@ -619,7 +619,9 @@ html, body {
     }
 
     .cancel {
-        font-size: 14px;
+        padding-top: 2vh;
+        font-size: 24px;
+        margin-bottom: -2vh;
         
     }
 
@@ -641,6 +643,7 @@ html, body {
     .icon2 {
         display: block;
     }
+
     .home-body {
         background-color: rgba(29, 32, 29, 0.75);
         padding: 2vh 2vw;
@@ -735,7 +738,7 @@ html, body {
         color: var(--accent);
         text-shadow: 4px 4px 8px var(--primary);
         background-color: rgba(29, 32, 29, 0.75);
-        padding: -2vh 1vw;
+        padding: 2vh 1vw;
     }
 
     .resume-bottom {
