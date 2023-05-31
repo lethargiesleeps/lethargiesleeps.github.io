@@ -1,22 +1,33 @@
-//GLOBAL VARIABLES//
+//version 1.0
+//TODO: change highlighted menu object from smiley face
+//TODO: add this website repo to portfolio
+//TODO: add bounce on mobile scroll
+//TODO: add fade-in/out animations
+//TODO: add dummy loading screen
+//TODO: add french version
+//TODO: add light mode
+
+//#region Global Variables
 let currentPage = 0;
 const container = document.querySelector('.canvas');
+let currentActiveContainer = null;
+let previousActiveContainer = null;
+//#endregion
 
-//PROJECTS ELEMENTS//
+//#endregion Main DOM Elements
 const panels = document.querySelectorAll('.panel');
 const links = document.querySelectorAll('.nav-link');
 const borderContainer = document.getElementById('container');
 
 const elements = [
     { name: 'home', value: document.getElementById('homeBody') }, //0
-    { name: 'blurb', value: document.getElementById('homeBlurb') },                  //1
-    { name: 'projects', value: document.getElementById('projectCatContainer') },     //2
-    { name: 'webProjects', value: document.getElementById('webProjectsContainer') },  //3
-    { name: 'resume', value: document.getElementById('resumeContainer') },            //4
-    { name: 'connect', value: document.getElementById('connectContainer') },          //5
-    { name: 'projectContainer', value: document.getElementById('projectContainer') },
-    { name: 'mobileProjects', value: document.getElementById('mobileProjectsContainer') }, //7
-    { name: 'desktopProjects', value: document.getElementById('desktopProjectsContainer') }
+    { name: 'projects', value: document.getElementById('projectCatContainer') },     //1
+    { name: 'webProjects', value: document.getElementById('webProjectsContainer') },  //2
+    { name: 'resume', value: document.getElementById('resumeContainer') },            //3
+    { name: 'connect', value: document.getElementById('connectContainer') },          //4
+    { name: 'projectContainer', value: document.getElementById('projectContainer') }, //5
+    { name: 'mobileProjects', value: document.getElementById('mobileProjectsContainer') }, //6
+    { name: 'desktopProjects', value: document.getElementById('desktopProjectsContainer') } //7
 ];
 
 const navIcons = [
@@ -24,10 +35,29 @@ const navIcons = [
     { name: 'mobileProjectsToProjects', value: document.getElementById('mobileProjectsToProjects') },
     { name: 'desktopProjectsToProjects', value: document.getElementById('desktopProjectsToProjects') }
 ];
+//#endregion
+
+//#region Animation Related Variables
+const loadBg = document.querySelector('.bg-blur');
+const loadText = document.querySelector('.loading-text');
+const leftLoadBar = document.getElementById('load-bar-left');
+const rightLoadBar = document.getElementById('load-bar-right');
+let leftWidth = 0;
+let rightWidth = 0;
+let blurring = setInterval(blurryLoad, 30); //Website Entry Point
+let load = 0;
+let opacityInit = 1;
+let opacityFadeOutLoadText = null;
+let fadeInWelcomeText = null;
+let fadeOutWelcomeText = null;
+//#endregion
+
+//#region Initialization
 
 
-
-
+links[0].innerText = '☺';
+makeVisible(elements[0], 'block');
+scrollAdjustment();
 /**
  * Project Panel Navigation
  * When projects in a category exceeds 3, add project navigation inside navIcons, then add case here.
@@ -46,16 +76,6 @@ navIcons.forEach(n => {
         }
     });
 });
-
-/**
- * Initial view here when user first enters site.
- */
-//TODO: dummy loading screen to allow images and packages to load.
-links[0].innerText = '☺';
-clearContainer();
-makeVisible(elements[0], 'block');
-makeVisible(elements[1], 'block');
-scrollAdjustment();
 
 
 /**
@@ -78,16 +98,13 @@ panels.forEach(panel => {
         if(panel.classList.contains('active')) {
             switch(panel) {
                 case panels[0]:
-                    clearContainer();
-                    makeVisible(elements[3], 'flex');
+                    makeVisible(elements[2], 'flex');
                     break;
                 case panels[1]:
-                    clearContainer();
-                    makeVisible(elements[7], 'flex');
+                    makeVisible(elements[6], 'flex');
                     break;
                 case panels[2]:
-                    clearContainer();
-                    makeVisible(elements[8], 'flex');
+                    makeVisible(elements[7], 'flex');
                     break;
                 default:
                     displayProject(panel.id);
@@ -139,7 +156,9 @@ for(let i = 0; i < links.length; i++) {
     });
 
 }
+//#endregion
 
+//#region Navigation Related Functions
 /**
  * Ensures the page is always at top if navigating pages, mostly used for mobile version.
  */
@@ -164,10 +183,7 @@ function goToHome() {
     currentPage = 0;
     resetNavTitles();
     links[0].innerText = '☺'
-    clearContainer();
     makeVisible(elements[0], 'block');
-    makeVisible(elements[1], 'block');
-    
 }
 
 /**
@@ -176,9 +192,8 @@ function goToHome() {
 function goToProjects() {
     currentPage = 1;
     resetNavTitles();
-    links[1].innerText = '☺'
-    clearContainer();
-    makeVisible(elements[2], 'flex');
+    links[1].innerText = '☺';
+    makeVisible(elements[1], 'flex');
     
 }
 
@@ -189,8 +204,7 @@ function goToResume() {
     currentPage = 2;
     resetNavTitles();
     links[2].innerText = '☺'
-    clearContainer();
-    makeVisible(elements[4], 'flex');
+    makeVisible(elements[3], 'flex');
 }
 
 /**
@@ -200,8 +214,7 @@ function goToConnect() {
     currentPage = 4;
     resetNavTitles();
     links[3].innerText = '☺'
-    clearContainer();
-    makeVisible(elements[5], 'flex');
+    makeVisible(elements[4], 'flex');
 }
 
 /**
@@ -210,9 +223,8 @@ function goToConnect() {
  */
 function displayProject(projectName) {
     //Initializing
-    clearContainer();
     borderContainer.classList.add('container-active');
-    makeVisible(elements[6], 'block');
+    makeVisible(elements[5], 'block');
     const name = document.getElementById('projectName');
     const img = document.getElementById('projectImage');
     const date = document.getElementById('projectDate');
@@ -244,15 +256,12 @@ function displayProject(projectName) {
         borderContainer.classList.remove('container-active');
         switch(project.projectType) {
             case 'web':
-                clearContainer();
-                makeVisible(elements[3], 'flex');
+                makeVisible(elements[2], 'flex');
                 break;
             case 'mobile':
-                clearContainer();
-                makeVisible(elements[7], 'flex');
+                makeVisible(elements[6], 'flex');
             case 'desktop':
-                clearContainer();
-                makeVisible(elements[8], 'flex');
+                makeVisible(elements[7], 'flex');
                 break;
             default:
                 break;
@@ -260,7 +269,16 @@ function displayProject(projectName) {
     })
 }
 
-//INTERNAL FUNCTIONS//
+function setPreviousActiveContainer() {
+    previousActiveContainer = elements.forEach((e) => {
+        if(e.value.style.display != 'none') {
+            console.log(`LAST ACTIVE CONTAINER:`);
+            console.log(e)
+            return e;
+        }
+        
+    })
+}
 /**
  * Gets correct project from projectData JSON array
  * @param {string} projectName 
@@ -314,8 +332,86 @@ function clearContainer() {
  * @see clearContainer
  */
 function makeVisible(object, type) {
+    setPreviousActiveContainer();
+    clearContainer();
+    currentActiveContainer = object.value;
+    console.log(currentActiveContainer);
     object.value.style.display = type;
 }
+//#endregion
+
+//#region Animations
+function blurryLoad() {
+    load++;
+    if(load > 99) {
+        clearInterval(blurring);
+        opacityFadeOutLoadText = setInterval(fadeLoadText, 100);
+        
+    }
+        
+    loadText.innerText = `${load}%`;
+    loadText.style.opacity = scale(load, 100, 1, 0);
+    loadBg.style.filter = `blur(${scale(load, 100, 30, 0)}px)`;
+    if (leftWidth > 140) {
+        leftWidth = 140;
+        rightLoadBar.style.display = 'block';
+        if(rightWidth > 150) {
+            rightWidth = 150;
+        }
+        else {
+            rightWidth += 5;
+            rightLoadBar.style.width = `${rightWidth}px`;
+        }
+    }
+    else {
+        leftWidth += 4;
+        leftLoadBar.style.width = `${leftWidth}px`
+    }
+
+}
+
+function fadeOutWelcomeScreen() {
+    opacityInit -= 0.1;
+    if (opacityInit < 0) {
+        clearInterval(fadeOutWelcomeText);
+        loadBg.style.display = 'none';
+        loadText.style.display = 'none';
+    }
+
+    loadBg.style.opacity = opacityInit;
+    loadText.style.opacity = opacityInit;
+
+}
+
+function fadeWelcomeText() {
+    opacityInit += 0.1;
+    if(opacityInit > 1) {
+        clearInterval(fadeInWelcomeText);
+        fadeOutWelcomeText = setInterval(fadeOutWelcomeScreen, 100)
+    }
+    loadText.style.opacity = opacityInit;
+}
+
+function fadeLoadText() {
+    opacityInit -= 0.1;
+    if(opacityInit < 0) {
+        clearInterval(opacityFadeOutLoadText);
+        loadText.innerText = 'Welcome!';
+        loadText.style.left = '40%';
+        fadeInWelcomeText = setInterval(fadeWelcomeText, 100);
+    }
+
+    loadText.style.opacity = opacityInit;
+    leftLoadBar.style.opacity = opacityInit;
+    rightLoadBar.style.opacity = opacityInit;
+}
+
+const scale = (num, in_min, in_max, out_min, out_max) => {
+    return (num - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+}
+//#endregion
+
+//#region JSON
 
 /**
  * JSON for all projects in the portfolio
@@ -413,4 +509,5 @@ const projectData = [
         repoLink: 'https://github.com/lethargiesleeps/SharpConverter'
     }
 ];
+//#endregion
 

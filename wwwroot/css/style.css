@@ -3,6 +3,7 @@
 :root {
     --fontFamily: 'Poppins', sans-serif;
     --primary: #1d201d;
+    --gradient: #4c4e4c;
     --accent: #e7e8e3;
     --hover: #aeb1a0;
     --color-trans: color 0.4s ease-in;
@@ -28,6 +29,7 @@ html, body {
 }
 
 /*-------------END-GLOBAL---------------*/
+
 
 /*-------------NAV---------------*/
 .nav-container {
@@ -100,6 +102,42 @@ html, body {
     transition-property: width, border-radius, margin-left;
     transition-duration: 1s;
     transition-timing-function: ease-in;
+}
+
+.bg-blur {
+    background: url('../images/wave.jpg') no-repeat center center/cover;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -30px;
+    left: -30px;
+    width: calc(100vw + 60px);
+    height: calc(100vh + 60px);
+    z-index: 2;
+    filter: blur(5px);
+}
+
+#load-bar-left {
+    background-color: var(--accent);
+    position: absolute;
+    padding: 4px;
+    top: 50%;
+    left: 34%;
+    width: 0;
+    z-index: 9;
+}
+
+
+#load-bar-right {
+    display: none;
+    background-color: var(--accent);
+    position: absolute;
+    padding: 4px;
+    top: 50%;
+    left: 53%;
+    width: 0;
+    z-index: 9;
 }
 
 .container.container-active {
@@ -332,8 +370,21 @@ html, body {
 
 /*-------------TEXT---------------*/
 
+.loading-text {
+    position: absolute;
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    top: 45%;
+    left: 45%;
+    font-family: var(--fontFamily);
+    font-size: 50px;
+    color: var(--accent);
+    z-index: 9;
+}
 .cancel {
     font-family: var(--fontFamily);
+    text-shadow: 2px 2px var(--primary);
     color: var(--accent);
     transition: color 0.5s ease-in;
     font-size: 32px;
@@ -568,9 +619,12 @@ html, body {
 
 /*-------------END-TEXT---------------*/
 
+
+
 /*-------------MEDIA---------------*/
 @media only screen and (max-width: 600px) {
 
+    
     .container {
         padding: 02vw;
         height: 74vh;
@@ -594,7 +648,21 @@ html, body {
         margin-top: -2vh;
         border-radius: 15px;
     }
+
+    .loading-text {
+        font-size: 20px;
+        left: 40%;
+    }
     
+    #load-bar-left {
+        top: 46%;
+        left: 3%;
+    }
+
+    #load-bar-right {
+        left: 53%;
+        top: 46%;
+    }
     #projectHyper {
         margin-right: 6vw;
     }
