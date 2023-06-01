@@ -571,6 +571,7 @@ html, body {
 /*-------------MEDIA---------------*/
 @media only screen and (max-width: 600px) {
 
+    
     .container {
         padding: 02vw;
         height: 74vh;
@@ -706,6 +707,7 @@ html, body {
     .connect-icon {
         margin-right: 4vw;
     }
+
     .connect-item a {
         font-size: 18px;
     }
