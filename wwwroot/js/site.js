@@ -1,8 +1,18 @@
-//GLOBAL VARIABLES//
+//version 1.0
+//TODO: change highlighted menu object from smiley face
+//TODO: add this website repo to portfolio
+//TODO: add bounce on mobile scroll
+//TODO: add fade-in/out animations
+//TODO: add dummy loading screen
+//TODO: add french version
+//TODO: add light mode
+
+//#region GLOBAL VARIABLE
 let currentPage = 0;
 const container = document.querySelector('.canvas');
+//#endregion
 
-//PROJECTS ELEMENTS//
+//#region NAV ELEMENTS
 const panels = document.querySelectorAll('.panel');
 const links = document.querySelectorAll('.nav-link');
 const borderContainer = document.getElementById('container');
@@ -25,9 +35,14 @@ const navIcons = [
     { name: 'desktopProjectsToProjects', value: document.getElementById('desktopProjectsToProjects') }
 ];
 
+//#endregion
 
-
-
+links[0].innerText = '☺';
+clearContainer();
+makeVisible(elements[0], 'block');
+makeVisible(elements[1], 'block');
+scrollAdjustment();
+//#region NAV FUNCTIONALITY
 /**
  * Project Panel Navigation
  * When projects in a category exceeds 3, add project navigation inside navIcons, then add case here.
@@ -46,17 +61,6 @@ navIcons.forEach(n => {
         }
     });
 });
-
-/**
- * Initial view here when user first enters site.
- */
-//TODO: dummy loading screen to allow images and packages to load.
-links[0].innerText = '☺';
-clearContainer();
-makeVisible(elements[0], 'block');
-makeVisible(elements[1], 'block');
-scrollAdjustment();
-
 
 /**
  * Panel interactions.
@@ -96,7 +100,6 @@ panels.forEach(panel => {
     })
 
 })
-
 
 /**
  * Primary menu navigation
@@ -140,6 +143,9 @@ for(let i = 0; i < links.length; i++) {
 
 }
 
+//#endregion
+
+//#region Functions
 /**
  * Ensures the page is always at top if navigating pages, mostly used for mobile version.
  */
@@ -260,7 +266,6 @@ function displayProject(projectName) {
     })
 }
 
-//INTERNAL FUNCTIONS//
 /**
  * Gets correct project from projectData JSON array
  * @param {string} projectName 
@@ -317,9 +322,13 @@ function makeVisible(object, type) {
     object.value.style.display = type;
 }
 
-/**
- * JSON for all projects in the portfolio
- */
+//#endregion
+
+//#region ANIMATIONS
+
+//#endregion
+
+//#region JSON DATA
 const projectData = [
     {   name: 'Grade Genius',
         description: 'An web-based tool aimed at students of all levels to help them track and review their course progress.',
@@ -413,4 +422,5 @@ const projectData = [
         repoLink: 'https://github.com/lethargiesleeps/SharpConverter'
     }
 ];
+//#endregion
 
