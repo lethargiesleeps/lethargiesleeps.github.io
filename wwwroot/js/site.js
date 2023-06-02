@@ -10,6 +10,8 @@
 let currentPage = 0;
 const container = document.querySelector('.canvas');
 let menuSelectChar = '⦿';
+let previousContainer = null;
+let currentContainer = null;
 //#endregion
 
 //#region NAV ELEMENTS
@@ -238,14 +240,11 @@ function displayProject(projectName) {
         borderContainer.classList.remove('container-active');
         switch(project.projectType) {
             case 'web':
-                clearContainer();
                 makeVisible(elements[2], 'flex');
                 break;
             case 'mobile':
-                clearContainer();
                 makeVisible(elements[6], 'flex');
             case 'desktop':
-                clearContainer();
                 makeVisible(elements[7], 'flex');
                 break;
             default:
@@ -307,8 +306,19 @@ function clearContainer() {
  * @see clearContainer
  */
 function makeVisible(object, type) {
+    setPreviousContainer();
     clearContainer();
+    currentContainer = object.value;
     object.value.style.display = type;
+    console.log(previousContainer);
+    
+}
+
+function setPreviousContainer() {
+    previousContainer = elements.find(e => {
+        if(window.getComputedStyle(e.value).getPropertyValue('display') !== 'none')
+            return e;
+    })
 }
 
 //#endregion
@@ -328,15 +338,20 @@ let leftWidth = 0;
 let rightWidth = 0;
 let opacityX = 1;
 let opacityY = 0;
-let opacityBelowZero = false;
+let opacityA = 1;
+let opacityB = 0;
+let opacityXBelowZero = false;
+let opacityABelowZero = false;
 
 //INTERVALS
 let loadInterval = setInterval(animLoading, 30);
 let fadeOutLoadBarInterval = null;
 let fadeToMenuInterval = null;
-let timeoutA = null;
+let navFadeOutInterval = null;
+let navFadeInInterval;
 
 //FUNCTIONS
+
 function animLoading() {
     loadValue++;
     if(loadValue > 99) {
@@ -382,7 +397,7 @@ function animFadeOutLoadBar() {
     opacityX -= 0.1;
     if(opacityX < 0) {
         changeText = true;
-        opacityBelowZero = true;
+        opacityXBelowZero = true;
         
     }
     else {
@@ -391,7 +406,7 @@ function animFadeOutLoadBar() {
         loadBarRight.style.opacity = opacityX;
     }
 
-    if(opacityBelowZero) {
+    if(opacityXBelowZero) {
         loadingText.style.left = (screen.width > 600) ? '40%' : '35%';
         loadingText.innerText = 'Welcome!';
         opacityY += 0.1;
@@ -407,7 +422,6 @@ function animFadeOutLoadBar() {
 }
 
 function animFadeToMenu() {
-    console.log('opacity-x:' + opacityX);
     opacityX -= 0.1;
     if(opacityX < 0) {
         clearInterval(fadeToMenuInterval);
