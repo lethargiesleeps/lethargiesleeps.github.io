@@ -3,13 +3,13 @@
 //TODO: add this website repo to portfolio
 //TODO: add bounce on mobile scroll
 //TODO: add fade-in/out animations
-//TODO: add dummy loading screen
 //TODO: add french version
 //TODO: add light mode
 
 //#region GLOBAL VARIABLE
 let currentPage = 0;
 const container = document.querySelector('.canvas');
+let menuSelectChar = '⦿';
 //#endregion
 
 //#region NAV ELEMENTS
@@ -19,14 +19,13 @@ const borderContainer = document.getElementById('container');
 
 const elements = [
     { name: 'home', value: document.getElementById('homeBody') }, //0
-    { name: 'blurb', value: document.getElementById('homeBlurb') },                  //1
-    { name: 'projects', value: document.getElementById('projectCatContainer') },     //2
-    { name: 'webProjects', value: document.getElementById('webProjectsContainer') },  //3
-    { name: 'resume', value: document.getElementById('resumeContainer') },            //4
-    { name: 'connect', value: document.getElementById('connectContainer') },          //5
-    { name: 'projectContainer', value: document.getElementById('projectContainer') },
-    { name: 'mobileProjects', value: document.getElementById('mobileProjectsContainer') }, //7
-    { name: 'desktopProjects', value: document.getElementById('desktopProjectsContainer') }
+    { name: 'projects', value: document.getElementById('projectCatContainer') },     //1
+    { name: 'webProjects', value: document.getElementById('webProjectsContainer') },  //2
+    { name: 'resume', value: document.getElementById('resumeContainer') },            //3
+    { name: 'connect', value: document.getElementById('connectContainer') },          //4
+    { name: 'projectContainer', value: document.getElementById('projectContainer') }, //5
+    { name: 'mobileProjects', value: document.getElementById('mobileProjectsContainer') }, //6
+    { name: 'desktopProjects', value: document.getElementById('desktopProjectsContainer') } //7
 ];
 
 const navIcons = [
@@ -37,12 +36,11 @@ const navIcons = [
 
 //#endregion
 
-links[0].innerText = '☺';
+links[0].innerText = menuSelectChar;
 clearContainer();
-makeVisible(elements[0], 'block');
-makeVisible(elements[1], 'block');
 scrollAdjustment();
 //#region NAV FUNCTIONALITY
+
 /**
  * Project Panel Navigation
  * When projects in a category exceeds 3, add project navigation inside navIcons, then add case here.
@@ -82,16 +80,13 @@ panels.forEach(panel => {
         if(panel.classList.contains('active')) {
             switch(panel) {
                 case panels[0]:
-                    clearContainer();
-                    makeVisible(elements[3], 'flex');
+                    makeVisible(elements[2], 'flex');
                     break;
                 case panels[1]:
-                    clearContainer();
-                    makeVisible(elements[7], 'flex');
+                    makeVisible(elements[6], 'flex');
                     break;
                 case panels[2]:
-                    clearContainer();
-                    makeVisible(elements[8], 'flex');
+                    makeVisible(elements[7], 'flex');
                     break;
                 default:
                     displayProject(panel.id);
@@ -169,11 +164,8 @@ function scrollAdjustment() {
 function goToHome() {
     currentPage = 0;
     resetNavTitles();
-    links[0].innerText = '☺'
-    clearContainer();
-    makeVisible(elements[0], 'block');
-    makeVisible(elements[1], 'block');
-    
+    links[0].innerText = menuSelectChar;
+    makeVisible(elements[0], 'block'); 
 }
 
 /**
@@ -182,9 +174,8 @@ function goToHome() {
 function goToProjects() {
     currentPage = 1;
     resetNavTitles();
-    links[1].innerText = '☺'
-    clearContainer();
-    makeVisible(elements[2], 'flex');
+    links[1].innerText = menuSelectChar;
+    makeVisible(elements[1], 'flex');
     
 }
 
@@ -194,9 +185,8 @@ function goToProjects() {
 function goToResume() {
     currentPage = 2;
     resetNavTitles();
-    links[2].innerText = '☺'
-    clearContainer();
-    makeVisible(elements[4], 'flex');
+    links[2].innerText = menuSelectChar;
+    makeVisible(elements[3], 'flex');
 }
 
 /**
@@ -205,9 +195,8 @@ function goToResume() {
 function goToConnect() {
     currentPage = 4;
     resetNavTitles();
-    links[3].innerText = '☺'
-    clearContainer();
-    makeVisible(elements[5], 'flex');
+    links[3].innerText = menuSelectChar;
+    makeVisible(elements[4], 'flex');
 }
 
 /**
@@ -216,9 +205,8 @@ function goToConnect() {
  */
 function displayProject(projectName) {
     //Initializing
-    clearContainer();
     borderContainer.classList.add('container-active');
-    makeVisible(elements[6], 'block');
+    makeVisible(elements[5], 'block');
     const name = document.getElementById('projectName');
     const img = document.getElementById('projectImage');
     const date = document.getElementById('projectDate');
@@ -251,14 +239,14 @@ function displayProject(projectName) {
         switch(project.projectType) {
             case 'web':
                 clearContainer();
-                makeVisible(elements[3], 'flex');
+                makeVisible(elements[2], 'flex');
                 break;
             case 'mobile':
                 clearContainer();
-                makeVisible(elements[7], 'flex');
+                makeVisible(elements[6], 'flex');
             case 'desktop':
                 clearContainer();
-                makeVisible(elements[8], 'flex');
+                makeVisible(elements[7], 'flex');
                 break;
             default:
                 break;
@@ -319,12 +307,116 @@ function clearContainer() {
  * @see clearContainer
  */
 function makeVisible(object, type) {
+    clearContainer();
     object.value.style.display = type;
 }
 
 //#endregion
 
 //#region ANIMATIONS
+
+//ELEMENTS
+const loadDiv = document.getElementById('load-div');
+const bgLoad = document.getElementById('bg-load');
+const loadBarLeft = document.getElementById('load-bar-left');
+const loadBarRight = document.getElementById('load-bar-right');
+const loadingText = document.getElementById('loading-text');
+
+//VARIABLES
+let loadValue = 0;
+let leftWidth = 0;
+let rightWidth = 0;
+let opacityX = 1;
+let opacityY = 0;
+let opacityBelowZero = false;
+
+//INTERVALS
+let loadInterval = setInterval(animLoading, 30);
+let fadeOutLoadBarInterval = null;
+let fadeToMenuInterval = null;
+let timeoutA = null;
+
+//FUNCTIONS
+function animLoading() {
+    loadValue++;
+    if(loadValue > 99) {
+        clearInterval(loadInterval);
+        makeVisible(elements[0], 'block');
+        fadeOutLoadBarInterval = setInterval(animFadeOutLoadBar, 100);
+    }
+
+    loadingText.innerText = `${loadValue}%`;
+    if(screen.width > 600) {
+        if(leftWidth > 140) {
+            leftWidth = 140;
+            loadBarRight.style.display = 'block';
+            if(rightWidth > 150) {
+                rightWidth = 150;
+            }
+            else {
+                rightWidth += 5;
+                loadBarRight.style.width = `${rightWidth}px`;
+    
+            }
+    
+        }
+        else {
+            leftWidth += 4;
+            loadBarLeft.style.width = `${leftWidth}px`;
+        }
+    }
+    else {
+        if(leftWidth > screen.width) {
+            leftWidth = screen.width;
+            console.log(leftWidth);
+        }
+        else {
+            leftWidth += (screen.width / 100);
+            loadBarLeft.style.width = `${leftWidth - (leftWidth * 0.03)}px`;
+        }
+            
+    }
+}
+
+function animFadeOutLoadBar() {
+    opacityX -= 0.1;
+    if(opacityX < 0) {
+        changeText = true;
+        opacityBelowZero = true;
+        
+    }
+    else {
+        loadingText.style.opacity = opacityX;
+        loadBarLeft.style.opacity = opacityX;
+        loadBarRight.style.opacity = opacityX;
+    }
+
+    if(opacityBelowZero) {
+        loadingText.style.left = (screen.width > 600) ? '40%' : '35%';
+        loadingText.innerText = 'Welcome!';
+        opacityY += 0.1;
+        
+        if(opacityY > 1) {
+            clearInterval(fadeOutLoadBarInterval);
+            makeVisible(elements[0], 'block');
+            opacityX = 1;
+            fadeToMenuInterval = setInterval(animFadeToMenu, 100);
+        }
+        loadingText.style.opacity = opacityY
+    }
+}
+
+function animFadeToMenu() {
+    console.log('opacity-x:' + opacityX);
+    opacityX -= 0.1;
+    if(opacityX < 0) {
+        clearInterval(fadeToMenuInterval);
+        bgLoad.style.display = 'none';
+        loadingText.style.display = 'none';
+    }
+    bgLoad.style.opacity = opacityX;
+    loadingText.style.opacity = opacityX;
+}
 
 //#endregion
 

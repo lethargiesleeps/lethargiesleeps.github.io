@@ -2,10 +2,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap');
 :root {
     --fontFamily: 'Poppins', sans-serif;
-    --primary: #1d201d;
+    --primary: #202123;
     --accent: #e7e8e3;
     --hover: #aeb1a0;
     --color-trans: color 0.4s ease-in;
+    --mobile-overlay: rgba(32, 33, 35, 0.8);
 }
 
 
@@ -28,6 +29,55 @@ html, body {
 }
 
 /*-------------END-GLOBAL---------------*/
+
+/* -----------FOR ANIMATIONS----------- */
+#bg-load {
+    background: url('../images/waves.jpg') no-repeat center center/cover;
+    position: absolute;
+    top: -30px;
+    left: -30px;
+    width: calc(100vw + 60px);
+    height: calc(100vh + 60px);
+    z-index: 2;
+    filter: blur(6px) brightness(40%) hue-rotate(90deg);
+    overflow: hidden;
+    
+}
+
+#load-bar-left {
+    background-color: var(--accent);
+    position: absolute;
+    padding: 4px;
+    top: 50%;
+    left: 34%;
+    width: 0;
+    z-index: 9;
+}
+
+#load-bar-right {
+    display: none;
+    background-color: var(--accent);
+    position: absolute;
+    padding: 4px;
+    top: 50%;
+    left: 53%;
+    width: 0;
+    z-index: 9;
+}
+
+#loading-text {
+    position: absolute;
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    top: 45%;
+    left: 45%;
+    font-family: var(--fontFamily);
+    font-size: 50px;
+    color: var(--accent);
+    z-index: 9;
+}
+/* -----------END-FOR-ANIMATIONS------- */
 
 /*-------------NAV---------------*/
 .nav-container {
@@ -106,7 +156,6 @@ html, body {
     margin-left: 24%;
     width: 50vw;
     border-radius: 25px;
-   
 }
 
 .bg-image {
@@ -571,12 +620,23 @@ html, body {
 /*-------------MEDIA---------------*/
 @media only screen and (max-width: 600px) {
 
-    
+
+    #load-bar-left {
+        left: 1%;
+        
+    }
+
+    #loading-text {
+        font-size: 24px;
+        left: 45%;
+        /* 35 */
+    }
     .container {
         padding: 02vw;
         height: 74vh;
         overflow-y: scroll;
     }
+
     
     .container.container-active {
         position: relative;
@@ -590,7 +650,7 @@ html, body {
     }
 
     .project-container {
-        background-color: rgba(29, 32, 29, 0.8);
+        background-color: var(--mobile-overlay);
         padding: 2vh 3vw;
         margin-top: -2vh;
         border-radius: 15px;
@@ -647,7 +707,7 @@ html, body {
     }
 
     .home-body {
-        background-color: rgba(29, 32, 29, 0.75);
+        background-color: var(--mobile-overlay);
         padding: 2vh 2vw;
         position:inherit;
         top: 15vh;
@@ -713,7 +773,7 @@ html, body {
     }
 
     .connect-container {
-        background-color: rgba(29, 32, 29, 0.75);
+        background-color: var(--mobile-overlay);
         padding: 2vh 2vw;
         margin-top: 17vh;
     }
@@ -740,7 +800,7 @@ html, body {
         justify-content: space-between;
         color: var(--accent);
         text-shadow: 4px 4px 8px var(--primary);
-        background-color: rgba(29, 32, 29, 0.75);
+        background-color: var(--mobile-overlay);
         padding: 2vh 1vw;
     }
 
